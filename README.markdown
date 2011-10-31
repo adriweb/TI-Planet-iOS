@@ -2,6 +2,7 @@
 
 ##Author
 Adriweb pour la couche TI-Planet et les ajouts
+
 Jens Krause -  Simple RSS Reader on EasyMVC : [WEBSECTOR.DE](http://www.websector.de)
 
 ##Licence
