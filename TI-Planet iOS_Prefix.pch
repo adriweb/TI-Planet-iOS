@@ -1,0 +1,16 @@
+//
+// Prefix header for all source files of the 'TIPlanet' target in the 'TIPlanet' project
+//
+
+/* 
+ * 
+ * @author        Adriweb - Original from Jens Krause [www.websector.de]    
+ * @date          31/08/2011
+ *   
+ */
+
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
