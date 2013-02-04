@@ -52,9 +52,7 @@ static NSSet *interestingKeys;
 
 -(BOOL)getBlogData:(NSURL *) url
 {
-    
-    NSLog(@"bug ?");
-    
+       
     NSLog(@"blogEntries : %@", blogEntries);
     
     [blogEntries release];
@@ -70,9 +68,7 @@ static NSSet *interestingKeys;
 	[[NSURLCache sharedURLCache] setDiskCapacity:0];
 	
 	NSXMLParser *feedParser = [[NSXMLParser alloc] initWithContentsOfURL: url];
-    
-    NSLog(@"bug 2 ?");
-	
+    	
     //	NSLog( @"2. retainCount of: %i",[url retainCount] );
 	
     
@@ -85,8 +81,6 @@ static NSSet *interestingKeys;
 	// start parsing
 	BOOL success;	
 	success = [feedParser parse];
-    
-    NSLog(@"bug 3?");
     
 	[feedParser release];
 	

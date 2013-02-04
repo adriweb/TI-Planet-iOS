@@ -29,8 +29,8 @@
 
 	
 	//[dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'+02:00'"];
-    // from php :  Y-m-d\TH:i:s  (exemple : 2011-08-04T02:59:07+02:00 )
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'+01:00'"];
+    // from php :  Y-m-d\TH:i:s  (exemple : 2013-02-04T00:05:37+01:00 )
     
 	NSDate *formattedDate = [dateFormatter dateFromString: feedDateString];
 	

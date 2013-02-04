@@ -62,7 +62,7 @@
 	if ((internetStatus != ReachableViaWiFi) && (internetStatus != ReachableViaWWAN))
 	{
 		UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"Pas de connexion Internet"
-                                                          message:@"Une connexion internet via Wifi ou Réseau celullaire (GPRS/EDGE/3G) est requise."
+                                                          message:@"Une connexion internet via Wifi ou Réseau cellulaire (GPRS/EDGE/3G) est requise."
                                                          delegate:self
                                                 cancelButtonTitle:@"Ok"
                                                 otherButtonTitles:nil];

@@ -21,6 +21,7 @@
 		040CE23D0F3E1EDE00FCABD0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040CE23C0F3E1EDE00FCABD0 /* Localizable.strings */; };
 		040CE2420F3E1F9000FCABD0 /* BlogEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040CE2410F3E1F9000FCABD0 /* BlogEntryCell.xib */; };
 		040CE24A0F3E20EB00FCABD0 /* BlogEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CE2490F3E20EB00FCABD0 /* BlogEntryCell.m */; };
+		092AC07116C01ADF001C7CD7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 092AC07016C01ADF001C7CD7 /* Default-568h@2x.png */; };
 		1D3623260D0F684500981E51 /* TIPlanetAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* TIPlanetAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -95,6 +96,7 @@
 		040CE2410F3E1F9000FCABD0 /* BlogEntryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlogEntryCell.xib; sourceTree = "<group>"; };
 		040CE2480F3E20EB00FCABD0 /* BlogEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogEntryCell.h; sourceTree = "<group>"; };
 		040CE2490F3E20EB00FCABD0 /* BlogEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogEntryCell.m; sourceTree = "<group>"; };
+		092AC07016C01ADF001C7CD7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* TIPlanetAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPlanetAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* TIPlanetAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPlanetAppDelegate.m; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 		D9EEC8E51413C02900E2443F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				092AC07016C01ADF001C7CD7 /* Default-568h@2x.png */,
 				D9EEC8F11414221600E2443F /* Default@2x.png */,
 				D9EEC8EF1414221100E2443F /* Default.png */,
 				D9EEC8ED1414174500E2443F /* Default-Portrait~ipad.png */,
@@ -586,7 +589,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TI-Planet iOS" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -632,6 +635,7 @@
 				D9EEC8EE1414174500E2443F /* Default-Portrait~ipad.png in Resources */,
 				D9EEC8F01414221200E2443F /* Default.png in Resources */,
 				D9EEC8F21414221600E2443F /* Default@2x.png in Resources */,
+				092AC07116C01ADF001C7CD7 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,21 +690,22 @@
 					"$(ARCHS_STANDARD_32_BIT)",
 					armv6,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adrien Bertrand (RT4U9BJG7S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adrien Bertrand (RT4U9BJG7S)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TI-Planet iOS_Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "TI-Planet iOS";
-				PROVISIONING_PROFILE = "F0C5451C-2D39-48B6-B71A-CFE51B0461A9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F0C5451C-2D39-48B6-B71A-CFE51B0461A9";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -716,19 +721,20 @@
 					"$(ARCHS_STANDARD_32_BIT)",
 					armv6,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Adrien Bertrand";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adrien Bertrand";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TI-Planet iOS_Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "TI-Planet iOS";
-				PROVISIONING_PROFILE = "1781343B-B08F-49E5-8FF5-3B59C928D7EA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1781343B-B08F-49E5-8FF5-3B59C928D7EA";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -743,17 +749,18 @@
 					armv6,
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adrien Bertrand (RT4U9BJG7S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adrien Bertrand (RT4U9BJG7S)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "F0C5451C-2D39-48B6-B71A-CFE51B0461A9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F0C5451C-2D39-48B6-B71A-CFE51B0461A9";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
@@ -767,16 +774,17 @@
 					armv6,
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Adrien Bertrand";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adrien Bertrand";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
-				PROVISIONING_PROFILE = "1781343B-B08F-49E5-8FF5-3B59C928D7EA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1781343B-B08F-49E5-8FF5-3B59C928D7EA";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
