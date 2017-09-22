@@ -3,10 +3,10 @@
 //  TIPlanet
 //
 /* 
- * 
- * @author        Adriweb - Original from Jens Krause [www.websector.de]    
+ *
+ * @author        Adriweb - Original from Jens Krause [www.websector.de]
  * @date          31/08/2011
- *   
+ *
  */
 
 
@@ -34,8 +34,8 @@
 
 -(instancetype)init
 {
-    if (self = [super init]) 
-    {    
+    if (self = [super init])
+    {
         blogEntries = [[NSMutableArray alloc] init];
         postViewController = [PostViewController postViewController];
     }
@@ -70,7 +70,7 @@
     imageView.image = [UIImage imageNamed:@"Default.png"];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) imageView.image = [UIImage imageNamed:@"Default-Portrait~ipad.png"];
     imageView.opaque = YES; // explicitly opaque for performance
-    [self.view addSubview:imageView]; 
+    [self.view addSubview:imageView];
     
     [self performSelector:@selector(killSplashScreen) withObject:nil afterDelay:0];
 
@@ -82,7 +82,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
+                                     // Release anything that's not essential, such as cached data
 }
 
 
@@ -128,23 +128,23 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-   NSUInteger row = indexPath.row;
+    NSUInteger row = indexPath.row;
     
     static NSString *CellId = @"BlogEntryCellIdentifier";
     
     BlogEntryCell *cell = (BlogEntryCell *) [tableView dequeueReusableCellWithIdentifier: CellId];
     
-    if (cell == nil) 
+    if (cell == nil)
     {
         NSArray *nib;
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            nib = [[NSBundle mainBundle] loadNibNamed:@"BlogEntryCell-iPad" 
-                                                         owner:self 
-                                                       options:nil];
+            nib = [[NSBundle mainBundle] loadNibNamed:@"BlogEntryCell-iPad"
+                                                owner:self
+                                              options:nil];
         } else {
-            nib = [[NSBundle mainBundle] loadNibNamed:@"BlogEntryCell" 
-                                                         owner:self 
-                                                       options:nil];
+            nib = [[NSBundle mainBundle] loadNibNamed:@"BlogEntryCell"
+                                                owner:self
+                                              options:nil];
         }
         
         for (id object in nib)
@@ -162,12 +162,11 @@
     {
         EntryVO *entryVO = blogEntries[row];
         // headline
-        cell.headline.text = [NSString stringWithFormat: @"%@ - Par %@  -  %@",
-                                                        entryVO.category,
-                                                        entryVO.author,
-                                                        [FormatterUtil formatFeedDateString: entryVO.dateString 
-                                                                                newFormat: @"'Le 'dd'/'MM'/'yyyy' à 'HH:mm"] 
-                                                        ] ;
+        cell.headline.text = [NSString stringWithFormat: @"%@ - %@",
+                              [entryVO.category stringByReplacingOccurrencesOfString:@"News " withString:@""],
+                              [FormatterUtil formatFeedDateString: entryVO.dateString
+                                                        newFormat: @"'Le 'dd'/'MM'/'yyyy' à 'HH:mm"]
+                             ];
         cell.label.text = entryVO.title;
     }
     else
@@ -202,7 +201,7 @@
 -(void)showBlogEntry
 {       
     [self.navigationController pushViewController:postViewController
-                               animated:YES];
+                                         animated:YES];
 }
 
 -(void)getBlogEntries

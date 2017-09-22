@@ -145,16 +145,21 @@
     
     int theWidth = [UIScreen mainScreen].bounds.size.width-10;
     
-    NSString *style = [NSString stringWithFormat:@"<style type='text/css'><!--* { font-family: Arial; color: #333; font-size: 1em;}  h1 { font-size: 1.4em; text-shadow: 0px 0px 0px #eee, 1px 1px 0px #707070;} date { color: #666; font-size: .8em; } a { color:#3388BB; text-decoration:underline }  img { max-width:%ipx; height:auto;} --></style>",theWidth];
+    NSString *style = [NSString stringWithFormat:@"<style type='text/css'><!--* { font-family: Arial; color: #333; font-size: 1em;}  h1 { font-size: 1.4em; text-shadow: 0px 0px 0px #eee, 1px 1px 0px #707070;} span.header { color: #666; font-size: .8em; } a { color:#3388BB; text-decoration:underline }  img { max-width:%ipx; height:auto;} --></style>",theWidth];
     
-    [webView loadHTMLString: [NSString stringWithFormat: @"<div>%@<date>%@     -     <a href=\"%@\">Voir la news sur le site</a></date><h1>%@</h1></div><p>%@</p>",
+    [webView loadHTMLString: [NSString stringWithFormat: @"<div>%@ <span class=\"header\">Par <b>%@</b>, %@</span><h1>%@</h1></div><p>%@</p>",
                               style,
-                              [FormatterUtil formatFeedDateString:  entryVO.dateString 
-                                                         newFormat: @"dd' 'MMMM' 'yyyy"],
-                              entryVO.link,
+                              entryVO.author,
+                              [FormatterUtil formatFeedDateString: entryVO.dateString
+                                                        newFormat: @"'le 'dd'/'MM'/'yyyy' à 'HH:mm"],
                               entryVO.title,
-                              entryVO.txt]
-                baseURL:nil];
+                              
+                              [entryVO.txt
+                                 stringByReplacingOccurrencesOfString:@"src=\"/forum/images/spinload.gif\" data-original=\""
+                                                           withString:@"src=\""]
+                              ]
+                baseURL:[NSURL URLWithString:@"https://tiplanet.org/"]
+     ];
 
 }
 
