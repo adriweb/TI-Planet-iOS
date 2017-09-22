@@ -12,7 +12,7 @@
 
 @synthesize pageTitle;
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     return self;
@@ -20,7 +20,7 @@
 
 -(void)viewDidLoad {
     ChatWebView.delegate = self;
-    [ChatWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.tiplanet.org/forum/chat/"]]];
+    [ChatWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://tiplanet.org/forum/chat/"]]];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
@@ -32,14 +32,9 @@
     NSString *titleStr = [ChatWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
     UIApplication* app = [UIApplication sharedApplication]; app.networkActivityIndicatorVisible = NO;
     pageTitle.title = titleStr;
-    int theWidth = [[UIScreen mainScreen] bounds].size.width;
+    int theWidth = [UIScreen mainScreen].bounds.size.width;
     pageTitle.width = 0.81*theWidth;
 }
 
-- (void) dealloc {
-    [ChatWebView release];
-    [pageTitle release];
-    [super dealloc];
-}
 
 @end

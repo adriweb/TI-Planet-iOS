@@ -37,7 +37,7 @@
 
 @synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshArrow, refreshArrow2, refreshSpinner;
 
-- (id)initWithStyle:(UITableViewStyle)style {
+- (instancetype)initWithStyle:(UITableViewStyle)style {
   self = [super initWithStyle:style];
   if (self != nil) {
     [self setupStrings];
@@ -45,7 +45,7 @@
   return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
   self = [super initWithCoder:aDecoder];
   if (self != nil) {
     [self setupStrings];
@@ -53,7 +53,7 @@
   return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self != nil) {
     [self setupStrings];
@@ -67,9 +67,9 @@
 }
 
 - (void)setupStrings{
-  textPull = [[NSString alloc] initWithString:@"Tirez pour rafraîchir..."];
-  textRelease = [[NSString alloc] initWithString:@"Relâchez pour rafraîchir..."];
-  textLoading = [[NSString alloc] initWithString:@"Chargement..."];
+    textPull = @"Tirez pour rafraîchir...";
+    textRelease = @"Relâchez pour rafraîchir...";
+    textLoading = @"Chargement...";
 }
 
 - (void)addPullToRefreshHeader {
@@ -120,11 +120,11 @@
         if (scrollView.contentOffset.y < -REFRESH_HEADER_HEIGHT) {
             // User is scrolling above the header
             refreshLabel.text = self.textRelease;
-            [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
+            refreshArrow.layer.transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
             //[refreshArrow2 layer].transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
         } else { // User is scrolling somewhere within the header
             refreshLabel.text = self.textPull;
-            [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+            refreshArrow.layer.transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
             //[refreshArrow2 layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
         }
         [UIView commitAnimations];
@@ -165,7 +165,7 @@
     [UIView setAnimationDuration:0.3];
     [UIView setAnimationDidStopSelector:@selector(stopLoadingComplete:finished:context:)];
     self.tableView.contentInset = UIEdgeInsetsZero;
-    [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+    refreshArrow.layer.transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
     [UIView commitAnimations];
 }
 
@@ -180,18 +180,6 @@
     // This is just a demo. Override this method with your custom refresh action.
     // Don't forget to call stopLoading at the end.
     [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];
-}
-
-- (void)dealloc {
-    [refreshHeaderView release];
-    [refreshLabel release];
-    [refreshArrow release];
-    [refreshArrow2 release];
-    [refreshSpinner release];
-    [textPull release];
-    [textRelease release];
-    [textLoading release];
-    [super dealloc];
 }
 
 @end

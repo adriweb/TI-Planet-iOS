@@ -40,14 +40,14 @@
  * @see View, Observer, Notification, SimpleCommand, MacroCommand
  */
 @interface Controller : NSObject <IController> {
-	NSMutableDictionary *commandMap;
-	id<IView> view;
+    NSMutableDictionary *commandMap;
+    id<IView> view;
 }
 
 @property(nonatomic, retain) NSMutableDictionary *commandMap;
 @property(nonatomic, retain) id<IView> view;
 
--(id)init;
+-(instancetype)init;
 -(void)initializeController;
 +(id<IController>)getInstance;
 

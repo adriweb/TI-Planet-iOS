@@ -24,14 +24,14 @@
  * 
  * @return the data as type id
  */
--(id)data;
+@property (NS_NONATOMIC_IOSONLY, strong) id data;
 
 /**
  * Get the Proxy name
  * 
  * @return the Proxy instance name
  */
--(NSString *)proxyName;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *proxyName;
 
 /**
  * Called by the Model when the Proxy is registered
@@ -48,6 +48,5 @@
  * 
  * @param data the data object
  */
--(void)setData:(id)data;
 
 @end

@@ -17,7 +17,7 @@
  * Static Convienence Constructor.
  */
 +(id)withNotifyMethod:(SEL)notifyMethod notifyContext:(id)notifyContext {
-	return [[[self alloc] initWithNotifyMethod:notifyMethod notifyContext:notifyContext] autorelease];
+    return [[self alloc] initWithNotifyMethod:notifyMethod notifyContext:notifyContext];
 }
 
 /**
@@ -30,12 +30,12 @@
  * @param notifyMethod the notification method of the interested object
  * @param notifyContext the notification context of the interested object
  */
--(id)initWithNotifyMethod:(SEL)_notifyMethod notifyContext:(id)_notifyContext {
-	if (self = [super init]) {
-		self.notifyMethod = _notifyMethod;
-		self.notifyContext = _notifyContext;
-	}
-	return self;
+-(instancetype)initWithNotifyMethod:(SEL)_notifyMethod notifyContext:(id)_notifyContext {
+    if (self = [super init]) {
+        self.notifyMethod = _notifyMethod;
+        self.notifyContext = _notifyContext;
+    }
+    return self;
 }
 
 /**
@@ -45,7 +45,7 @@
  * @return boolean indicating if the object and the notification context are the same
  */
 -(BOOL)compareNotifyContext:(id)object {
-	return [object isEqual:notifyContext];
+    return [object isEqual:notifyContext];
 }
 
 /**
@@ -54,13 +54,12 @@
  * @param notification the <code>INotification</code> to pass to the interested object's notification method.
  */
 -(void)notifyObserver:(id<INotification>)notification {
-	[notifyContext performSelector:notifyMethod withObject:notification];
+    [notifyContext performSelector:notifyMethod withObject:notification];
 }
 
 -(void)dealloc {
-	self.notifyMethod = nil;
-	self.notifyContext = nil;
-	[super dealloc];
+    self.notifyMethod = nil;
+    self.notifyContext = nil;
 }
 
 

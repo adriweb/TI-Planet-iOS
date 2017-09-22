@@ -26,32 +26,30 @@
 /**
  * Get the body of the <code>INotification</code> instance
  */
--(id)body;
+@property (NS_NONATOMIC_IOSONLY, strong) id body;
 
 /**
  * Get the name of the <code>INotification</code> instance. 
  * No setter, should be set by constructor only
  */
--(NSString *)name;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *name;
 
 /**
  * Get the type of the <code>INotification</code> instance
  */
--(NSString *)type;
+@property (NS_NONATOMIC_IOSONLY, copy) NSString *type;
 
 /**
  * Set the body of the <code>INotification</code> instance
  */
--(void)setBody:(id)body;
 
 /**
  * Set the type of the <code>INotification</code> instance
  */
--(void)setType:(NSString *)type;
 
 /**
  * Get the string representation of the <code>INotification</code> instance
  */
--(NSString *)description;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *description;
 
 @end

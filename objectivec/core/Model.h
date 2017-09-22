@@ -35,12 +35,12 @@
  * @see Proxy, IProxy
  */
 @interface Model : NSObject <IModel> {
-	NSMutableDictionary *proxyMap;
+    NSMutableDictionary *proxyMap;
 }
 
 @property(nonatomic, retain) NSMutableDictionary *proxyMap;
 
--(id)init;
+-(instancetype)init;
 -(void)initializeModel;
 +(id<IModel>)getInstance;
 

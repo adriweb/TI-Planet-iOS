@@ -19,31 +19,22 @@
 
 
 #pragma -
-#pragma mark init dealloc
-
--(void)dealloc 
-{
-	[super dealloc];
-}
-
-
-#pragma -
 #pragma mark mediator methods
 
 +(NSString *)NAME 
 {
-	return @"PostViewMediator";
+    return @"PostViewMediator";
 }
 
 -(PostViewController *)viewComponent 
 {
-	return viewComponent;
+    return viewComponent;
 }
 
 -(void)initializeMediator 
 {
-	self.mediatorName = [PostViewMediator NAME];
-	blogProxy = (BlogProxy *)[facade retrieveProxy:[BlogProxy NAME]];
+    self.mediatorName = [PostViewMediator NAME];
+    blogProxy = (BlogProxy *)[facade retrieveProxy:[BlogProxy NAME]];
 }
 
 -(void)onRegister 
@@ -55,24 +46,23 @@
 
 -(NSArray *)listNotificationInterests 
 {
-	return [NSArray arrayWithObjects:	BLOG_POST_DETAIL, 
-										BLOG_POST_DETAIL_FAILED, 
-										nil];
+    return @[BLOG_POST_DETAIL, 
+                                        BLOG_POST_DETAIL_FAILED];
 }
 
 -(void)handleNotification:(id<INotification>)notification 
 {
-	NSString *notificationName = [notification name];
-	
-	if ([notificationName isEqual: BLOG_POST_DETAIL]) 
-	{
-		[viewComponent newBlogEntry:[notification body]];	
-	}
-	else if ([notificationName isEqual: BLOG_POST_DETAIL_FAILED]) 
-	{
-			
-	}
-	
+    NSString *notificationName = [notification name];
+    
+    if ([notificationName isEqual: BLOG_POST_DETAIL]) 
+    {
+        [viewComponent newBlogEntry:[notification body]];    
+    }
+    else if ([notificationName isEqual: BLOG_POST_DETAIL_FAILED]) 
+    {
+            
+    }
+    
 }
 
 @end

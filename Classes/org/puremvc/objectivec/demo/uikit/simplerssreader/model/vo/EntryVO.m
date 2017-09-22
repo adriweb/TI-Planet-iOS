@@ -23,17 +23,5 @@
 @synthesize link;
 @synthesize category;
 
--(void) dealloc
-{
-	[dateString release];
-	[title release];
-	[txt release];
-	[blogTitle release];
-    [author release];
-    [link release];
-    [category release];
-	
-	[super dealloc];
-}
 
 @end

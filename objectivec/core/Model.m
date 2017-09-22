@@ -26,14 +26,14 @@ static id<IModel> instance;
  * @throws NSException if Singleton instance has already been constructed
  * 
  */
--(id)init {
-	if (instance != nil) {
-		//[NSException raise:@"Model Singleton already constructed! Use getInstance instead." format:nil];
-	} else if (self = [super init]) {
-		self.proxyMap = [NSMutableDictionary dictionary];
-		[self initializeModel];
-	}
-	return self;
+-(instancetype)init {
+    if (instance != nil) {
+        [NSException raise:@"Model Singleton already constructed! Use getInstance instead." format:nil];
+    } else if (self = [super init]) {
+        self.proxyMap = [NSMutableDictionary dictionary];
+        [self initializeModel];
+    }
+    return self;
 }
 
 /**
@@ -56,10 +56,10 @@ static id<IModel> instance;
  * @return the Singleton instance
  */
 +(id<IModel>)getInstance {
-	if (instance == nil) {
-		instance = [[self alloc] init];
-	}
-	return instance;
+    if (instance == nil) {
+        instance = [[self alloc] init];
+    }
+    return instance;
 }
 
 /**
@@ -69,7 +69,7 @@ static id<IModel> instance;
  * @return whether a Proxy is currently registered with the given <code>proxyName</code>.
  */
 -(BOOL)hasProxy:(NSString *)proxyName {
-	return [proxyMap objectForKey:proxyName] != nil;
+    return proxyMap[proxyName] != nil;
 }
 
 /**
@@ -78,8 +78,8 @@ static id<IModel> instance;
  * @param proxy an <code>IProxy</code> to be held by the <code>Model</code>.
  */
 -(void)registerProxy:(id<IProxy>)proxy {
-	[proxyMap setObject:proxy forKey:[proxy proxyName]];
-	[proxy onRegister];
+    proxyMap[[proxy proxyName]] = proxy;
+    [proxy onRegister];
 }
 
 /**
@@ -89,12 +89,12 @@ static id<IModel> instance;
  * @return the <code>IProxy</code> that was removed from the <code>Model</code>
  */
 -(id<IProxy>)removeProxy:(NSString *)proxyName {
-	id<IProxy> proxy = [proxyMap objectForKey:proxyName];
-	if (proxy != nil) {
-		[proxy onRemove];
-		[proxyMap removeObjectForKey:proxyName];
-	}
-	return proxy;
+    id<IProxy> proxy = proxyMap[proxyName];
+    if (proxy != nil) {
+        [proxy onRemove];
+        [proxyMap removeObjectForKey:proxyName];
+    }
+    return proxy;
 }
 
 /**
@@ -104,14 +104,12 @@ static id<IModel> instance;
  * @return the <code>IProxy</code> instance previously registered with the given <code>proxyName</code>.
  */
 -(id<IProxy>)retrieveProxy:(NSString *)proxyName {
-	return [proxyMap objectForKey:proxyName];
+    return proxyMap[proxyName];
 }
 
 -(void)dealloc {
-	self.proxyMap = nil;
-	[(id)instance release];
-	instance = nil;
-	[super dealloc];
+    self.proxyMap = nil;
+    instance = nil;
 }
 
 @end

@@ -23,6 +23,6 @@
 @interface SimpleCommand : Notifier <ICommand> {
 }
 
-+(id)command;
++(instancetype)command;
 
 @end

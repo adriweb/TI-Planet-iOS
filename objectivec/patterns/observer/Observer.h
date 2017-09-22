@@ -29,14 +29,14 @@
  * @see View, Notification
  */
 @interface Observer : NSObject <IObserver> {
-	SEL notifyMethod;
-	id notifyContext;
+    SEL notifyMethod;
+    id notifyContext;
 }
 
 @property SEL notifyMethod;
 @property(nonatomic, retain) id notifyContext;
 
 +(id)withNotifyMethod:(SEL)notifyMethod notifyContext:(id)notifyContext;
--(id)initWithNotifyMethod:(SEL)notifyMethod notifyContext:(id)notifyContext;
+-(instancetype)initWithNotifyMethod:(SEL)notifyMethod notifyContext:(id)notifyContext NS_DESIGNATED_INITIALIZER;
 
 @end

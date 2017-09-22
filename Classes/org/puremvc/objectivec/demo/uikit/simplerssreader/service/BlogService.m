@@ -10,8 +10,8 @@
  */
 
 //
-//	BlogService based on an example "Parsing XML in Cocoa" by Aaron Hillegass (http://weblog.bignerdranch.com/?p=48)
-//	and Apples example "SeismicXML" at iPhoneDevCenter (https://developer.apple.com/iphone/library/samplecode/SeismicXML/index.html)
+//    BlogService based on an example "Parsing XML in Cocoa" by Aaron Hillegass (http://weblog.bignerdranch.com/?p=48)
+//    and Apples example "SeismicXML" at iPhoneDevCenter (https://developer.apple.com/iphone/library/samplecode/SeismicXML/index.html)
 //
 
 #import "BlogService.h"
@@ -24,22 +24,12 @@ static NSSet *interestingKeys;
 
 @synthesize blogEntries;
 
-#pragma mark init && dealloc
-
--(void)dealloc
-{
-	[blogEntries release];
-	[blogTitle release];
-	
-	[super dealloc];
-}
-
 
 + (void)initialize
 {
     if ( !interestingKeys ) 
-	{
-        interestingKeys = [[NSSet alloc] initWithObjects:	@"title",
+    {
+        interestingKeys = [[NSSet alloc] initWithObjects:    @"title",
                            @"content",
                            @"updated",
                            @"name",
@@ -52,39 +42,21 @@ static NSSet *interestingKeys;
 
 -(BOOL)getBlogData:(NSURL *) url
 {
-       
-    NSLog(@"blogEntries : %@", blogEntries);
+    blogEntries = [[NSMutableArray alloc] init];
     
-    [blogEntries release];
-	blogEntries = [[NSMutableArray alloc] init];
-	
-    //	NSLog( @"1. retainCount of: %i",[url retainCount] );
-	
-	//
-	// Note: It seems, that NSXMLParser is causing a leak
-	// @see: http://www.iphonedevsdk.com/forum/iphone-sdk-development/3174-memory-leak.html#post41589
-	// The following "solution" doesn't work :-(	
-	[[NSURLCache sharedURLCache] setMemoryCapacity:0];
-	[[NSURLCache sharedURLCache] setDiskCapacity:0];
-	
-	NSXMLParser *feedParser = [[NSXMLParser alloc] initWithContentsOfURL: url];
-    	
-    //	NSLog( @"2. retainCount of: %i",[url retainCount] );
-	
+    NSXMLParser *feedParser = [[NSXMLParser alloc] initWithContentsOfURL: url];
     
-    [feedParser setDelegate: self];	
+    feedParser.delegate = self;
     [feedParser setShouldProcessNamespaces: NO];
     [feedParser setShouldReportNamespacePrefixes: NO];
     [feedParser setShouldResolveExternalEntities: NO];
-	
-	//
-	// start parsing
-	BOOL success;	
-	success = [feedParser parse];
     
-	[feedParser release];
-	
-	return success;
+    //
+    // start parsing
+    BOOL success;    
+    success = [feedParser parse];
+    
+    return success;
 }
 
 #pragma mark NSXMLParser delegate methods
@@ -102,28 +74,25 @@ didStartElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI 
  qualifiedName:(NSString *)qName 
     attributes:(NSDictionary *)attributeDict 
-{	
-    
-    //NSLog(@"element : %@",elementName);
-        
-	if ( parsedItemCounter > MAX_ENTRIES ) 
-	{
+{
+    if ( parsedItemCounter > MAX_ENTRIES ) 
+    {
         [parser abortParsing];
     }
     
     if ( [elementName isEqual:@"entry"]) 
-	{
+    {
         parsedItemCounter++;
-		currentEntry = [[EntryVO alloc] init];	
+        currentEntry = [[EntryVO alloc] init];    
         return;
-	}
+    }
     
     
     if ( [interestingKeys containsObject:elementName] ) 
-	{
+    {
         if ([elementName isEqualToString:@"category"]) {
 
-            NSString *tmpString = [attributeDict objectForKey:@"label"];
+            NSString *tmpString = attributeDict[@"label"];
             tmpString = [tmpString stringByReplacingOccurrencesOfString:@" (TI-73/76/80/81/82/83/84/85/86)"
                                                              withString:@""];
             tmpString = [tmpString stringByReplacingOccurrencesOfString:@" (TI-89/92, TI-Voyage 200)"
@@ -136,14 +105,14 @@ didStartElement:(NSString *)elementName
         keyInProgress = [elementName copy];
         textInProgress = [[NSMutableString alloc] init];
     }
-	
+    
 }
 
 
 - (void)parser:(NSXMLParser *)parser 
 foundCharacters:(NSString *)value 
 {
-	[textInProgress appendString: value];	
+    [textInProgress appendString: value];    
 }
 
 
@@ -152,80 +121,76 @@ foundCharacters:(NSString *)value
   namespaceURI:(NSString *)namespaceURI 
  qualifiedName:(NSString *)qName 
 {
-	
-	// store title of the entire blog - not of the post entry
-	// Note: We have to different @"title", because within XML data twice.
-	if ( [elementName isEqual:@"title"] && blogTitle == nil )
-	{
-		//[blogTitle release];
-		blogTitle = textInProgress;
-		return;
-	}
-	
-	
-	if ( [elementName isEqual:@"entry"] ) 
-	{
-		//
-		// store entry
-		currentEntry.blogTitle = [blogTitle copy];
-        [blogEntries addObject: currentEntry];
-		
-		[currentEntry release];
-		currentEntry = nil;
-		
-		return;
-		
+    
+    // store title of the entire blog - not of the post entry
+    // Note: We have to different @"title", because within XML data twice.
+    if ( [elementName isEqual:@"title"] && blogTitle == nil )
+    {
+        //[blogTitle release];
+        blogTitle = textInProgress;
+        return;
     }
-	
-	
-	if ( [elementName isEqual:keyInProgress])
-	{
-		if ( [elementName isEqual:@"content"] ) 
-		{
-			currentEntry.txt = textInProgress;		
-		}
-		else if ( [elementName isEqual:@"updated"] ) 
-		{
-			currentEntry.dateString = textInProgress;
-		}
-		else if ( [elementName isEqual:@"title"] ) 
-		{
-			currentEntry.title = textInProgress;
-		}
-        else if ( [elementName isEqual:@"name"] ) 
-		{
-			currentEntry.author = textInProgress;
-		}
-        else if ( [elementName isEqual:@"id"] ) 
-		{
-			currentEntry.link = textInProgress;
-		}
-        else if ( [elementName isEqual:@"category"] ) 
-		{
-			currentEntry.category = [NSMutableString stringWithString:theCategory];
-		}
+    
+    
+    if ( [elementName isEqual:@"entry"] ) 
+    {
+        //
+        // store entry
+        currentEntry.blogTitle = [blogTitle copy];
+        [blogEntries addObject: currentEntry];
         
-		[textInProgress release];
-		textInProgress = nil;
-		
-		[keyInProgress release];
-		keyInProgress = nil;
-	}
-	
-	
-	else 
-	{
-		//NSLog(@"uneeded XML element to store: %@", elementName);
-	}
-	
-	
-	
-	
+        currentEntry = nil;
+        
+        return;
+        
+    }
+    
+    
+    if ( [elementName isEqual:keyInProgress])
+    {
+        if ( [elementName isEqual:@"content"] ) 
+        {
+            currentEntry.txt = textInProgress;        
+        }
+        else if ( [elementName isEqual:@"updated"] ) 
+        {
+            currentEntry.dateString = textInProgress;
+        }
+        else if ( [elementName isEqual:@"title"] ) 
+        {
+            currentEntry.title = textInProgress;
+        }
+        else if ( [elementName isEqual:@"name"] ) 
+        {
+            currentEntry.author = textInProgress;
+        }
+        else if ( [elementName isEqual:@"id"] ) 
+        {
+            currentEntry.link = textInProgress;
+        }
+        else if ( [elementName isEqual:@"category"] ) 
+        {
+            currentEntry.category = [NSMutableString stringWithString:theCategory];
+        }
+        
+        textInProgress = nil;
+        keyInProgress = nil;
+    }
+    
+    
+    else 
+    {
+        //NSLog(@"uneeded XML element to store: %@", elementName);
+    }
+    
+    
+    
+    
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser 
 {
-	NSLog(@"blogEntries array has %d entries", [blogEntries count]);
+    NSLog(@"blogEntries array has %lu entries", (unsigned long)blogEntries.count);
 }
 
 

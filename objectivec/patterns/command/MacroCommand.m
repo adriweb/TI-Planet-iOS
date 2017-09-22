@@ -16,8 +16,8 @@
 /**
  * Static Convenience Constructor. 
  */
-+(id)command {
-	return [[[self alloc] init] autorelease];
++(instancetype)command {
+    return [[self alloc] init];
 }
 
 /**
@@ -32,12 +32,12 @@
  * If your subclass does define a constructor, be 
  * sure to call <code>[super init]</code>.</P>
  */
--(id)init {
-	if (self = [super init]) {
-		self.subCommands = [NSMutableArray array];
-		[self initializeMacroCommand];
-	}
-	return self;
+-(instancetype)init {
+    if (self = [super init]) {
+        self.subCommands = [NSMutableArray array];
+        [self initializeMacroCommand];
+    }
+    return self;
 }
 
 /**
@@ -50,12 +50,12 @@
  * this:</P>
  * 
  * @code
- *		// Initialize MyMacroCommand
- *		-(void)initializeMacroCommand {
- *			[self addSubCommand:[FirstCommand class]];
- *			[self addSubCommand:[SecondCommand class]];
- *			[self addSubCommand:[ThirdCommand class]];
- *		}
+ *        // Initialize MyMacroCommand
+ *        -(void)initializeMacroCommand {
+ *            [self addSubCommand:[FirstCommand class]];
+ *            [self addSubCommand:[SecondCommand class]];
+ *            [self addSubCommand:[ThirdCommand class]];
+ *        }
  * @endcode
  * 
  * <P>
@@ -75,7 +75,7 @@
  * @param commandClassRef a reference to the <code>Class</code> of the <code>ICommand</code>.
  */
 -(void)addSubCommand:(Class)commandClassRef {
-	[subCommands addObject:commandClassRef];
+    [subCommands addObject:commandClassRef];
 }
 
 /** 
@@ -88,14 +88,13 @@
  * @param notification the <code>INotification</code> object to be passsed to each <i>SubCommand</i>.
  */
 -(void)execute:(id<INotification>)notification {
-	for (Class commandClassRef in subCommands) {
-		[[[[commandClassRef alloc] init] autorelease] execute:notification];
-	}
+    for (Class commandClassRef in subCommands) {
+        [[[commandClassRef alloc] init] execute:notification];
+    }
 }
 
 -(void)dealloc {
-	self.subCommands = nil;
-	[super dealloc];
+    self.subCommands = nil;
 }
 
 @end

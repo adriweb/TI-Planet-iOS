@@ -32,18 +32,18 @@
  * @see Model
  */
 @interface Proxy : Notifier <IProxy> {
-	id data;
-	NSString *proxyName;
+    id data;
+    NSString *proxyName;
 }
 
 @property(nonatomic, retain) id data;
 @property(nonatomic, retain) NSString *proxyName;
 
-+(id)proxy;
++(instancetype)proxy;
 +(id)withProxyName:(NSString *)proxyName;
 +(id)withProxyName:(NSString *)proxyName data:(id)data;
 +(id)withData:(id)data;
--(id)initWithProxyName:(NSString *)proxyName data:(id)data;
+-(instancetype)initWithProxyName:(NSString *)proxyName data:(id)data NS_DESIGNATED_INITIALIZER;
 -(void)initializeProxy;
 
 +(NSString *)NAME;

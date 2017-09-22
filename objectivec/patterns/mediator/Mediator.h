@@ -16,18 +16,18 @@
  * @see View
  */
 @interface Mediator : Notifier <IMediator> {
-	NSString *mediatorName;
-	id viewComponent;
+    NSString *mediatorName;
+    id viewComponent;
 }
 
 @property(nonatomic, retain) id viewComponent;
 @property(nonatomic, retain) NSString *mediatorName;
 
-+(id)mediator;
++(instancetype)mediator;
 +(id)withMediatorName:(NSString *)mediatorName;
 +(id)withMediatorName:(NSString *)mediatorName viewComponent:(id)viewComponent;
 +(id)withViewComponent:(id)viewComponent;
--(id)initWithMediatorName:(NSString *)mediatorName viewComponent:(id)viewComponent;
+-(instancetype)initWithMediatorName:(NSString *)mediatorName viewComponent:(id)viewComponent NS_DESIGNATED_INITIALIZER;
 -(void)initializeMediator;
 
 +(NSString *)NAME;

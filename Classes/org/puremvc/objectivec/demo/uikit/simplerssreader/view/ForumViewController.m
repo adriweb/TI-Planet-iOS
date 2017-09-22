@@ -10,7 +10,7 @@
 
 @implementation ForumViewController
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     return self;
@@ -18,7 +18,7 @@
 
 -(void)viewDidLoad {
     forumWebView.delegate = self;
-    [forumWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.tiplanet.org/forum/"]]];
+    [forumWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://tiplanet.org/forum/"]]];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
@@ -29,8 +29,4 @@
     UIApplication* app = [UIApplication sharedApplication]; app.networkActivityIndicatorVisible = NO;
 }
 
-- (void) dealloc {
-    [super dealloc];
-}
-   
 @end

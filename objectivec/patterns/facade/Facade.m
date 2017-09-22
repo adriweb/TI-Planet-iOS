@@ -30,13 +30,13 @@ static id<IFacade> instance;
  * @throws NSException if Singleton instance has already been constructed
  * 
  */
--(id)init {
-	if (instance != nil) {
-		//[NSException raise:@"Facade Singleton already constructed! Use getInstance instead." format:nil];
-	} else if (self = [super init]) {
-		[self initializeFacade];
-	}
-	return self;
+-(instancetype)init {
+    if (instance != nil) {
+        [NSException raise:@"Facade Singleton already constructed! Use getInstance instead." format:nil];
+    } else if (self = [super init]) {
+        [self initializeFacade];
+    }
+    return self;
 }
 
 /**
@@ -48,9 +48,9 @@ static id<IFacade> instance;
  * sure to call <code>[super initializeFacade]</code>, though.</P>
  */
 -(void)initializeFacade {
-	[self initializeModel];
-	[self initializeController];
-	[self initializeView];
+    [self initializeModel];
+    [self initializeController];
+    [self initializeView];
 }
 
 /**
@@ -59,10 +59,10 @@ static id<IFacade> instance;
  * @return the Singleton instance of the Facade
  */
 +(id<IFacade>)getInstance {
-	if (instance == nil) {
-		instance = [[self alloc] init];
-	}
-	return instance;
+    if (instance == nil) {
+        instance = [[self alloc] init];
+    }
+    return instance;
 }
 
 /**
@@ -89,8 +89,8 @@ static id<IFacade> instance;
  * </P>
  */
 -(void)initializeModel {
-	if (model != nil) return;
-	self.model = [Model getInstance];
+    if (model != nil) return;
+    self.model = [Model getInstance];
 }
 
 /**
@@ -102,7 +102,7 @@ static id<IFacade> instance;
  * if one or both of the following are true:
  * <UL>
  * <LI> You wish to initialize a different <code>IController</code>.</LI>
- * <LI> You have <code>Commands</code> to register with the <code>Controller</code> at startup.</code>. </LI>		  
+ * <LI> You have <code>Commands</code> to register with the <code>Controller</code> at startup.</code>. </LI>          
  * </UL>
  * If you don't want to initialize a different <code>IController</code>, 
  * call <code>[super initializeController]</code> at the beginning of your
@@ -110,8 +110,8 @@ static id<IFacade> instance;
  * </P>
  */
 -(void)initializeController {
-	if (controller != nil) return;
-	self.controller = [Controller getInstance];
+    if (controller != nil) return;
+    self.controller = [Controller getInstance];
 }
 
 /**
@@ -137,8 +137,8 @@ static id<IFacade> instance;
  * </P>
  */
 -(void)initializeView {
-	if (view != nil) return;
-	self.view = [View getInstance];
+    if (view != nil) return;
+    self.view = [View getInstance];
 }
 
 
@@ -153,19 +153,19 @@ static id<IFacade> instance;
  * @param type the type of the notification
  */ 
 -(void)sendNotification:(NSString *)notificationName body:(id)body type:(NSString *)type {
-	[self notifyObservers:[Notification withName:notificationName body:body type:type]];
+    [self notifyObservers:[Notification withName:notificationName body:body type:type]];
 }
 
 -(void)sendNotification:(NSString *)notificationName {
-	[self sendNotification:notificationName body:nil type:nil];
+    [self sendNotification:notificationName body:nil type:nil];
 }
 
 -(void)sendNotification:(NSString *)notificationName body:(id)body {
-	[self sendNotification:notificationName body:body type:nil];
+    [self sendNotification:notificationName body:body type:nil];
 }
 
 -(void)sendNotification:(NSString *)notificationName type:(NSString *)type {
-	[self sendNotification:notificationName body:nil type:type];
+    [self sendNotification:notificationName body:nil type:type];
 }
 
 /**
@@ -175,7 +175,7 @@ static id<IFacade> instance;
  * @return whether a Command is currently registered for the given <code>notificationName</code>.
  */
 -(BOOL)hasCommand:(NSString *)notificationName {
-	return [controller hasCommand:notificationName];
+    return [controller hasCommand:notificationName];
 }
 
 /**
@@ -185,7 +185,7 @@ static id<IFacade> instance;
  * @return whether a Mediator is registered with the given <code>mediatorName</code>.
  */
 -(BOOL)hasMediator:(NSString *)mediatorName {
-	return [view hasMediator:mediatorName];
+    return [view hasMediator:mediatorName];
 }
 
 /**
@@ -195,7 +195,7 @@ static id<IFacade> instance;
  * @return whether a Proxy is currently registered with the given <code>proxyName</code>.
  */
 -(BOOL)hasProxy:(NSString *)proxyName {
-	return [model hasProxy:proxyName];
+    return [model hasProxy:proxyName];
 }
 
 /**
@@ -212,7 +212,7 @@ static id<IFacade> instance;
  * @param notification the <code>INotification</code> to have the <code>View</code> notify <code>Observers</code> of.
  */
 -(void)notifyObservers:(id<INotification>)notification {
-	[view notifyObservers:notification];
+    [view notifyObservers:notification];
 }
 
 /**
@@ -222,7 +222,7 @@ static id<IFacade> instance;
  * @param commandClassRef a reference to the Class of the <code>ICommand</code>
  */
 -(void)registerCommand:(NSString *)notificationName commandClassRef:(Class)commandClassRef {
-	[controller registerCommand:notificationName commandClassRef:commandClassRef];
+    [controller registerCommand:notificationName commandClassRef:commandClassRef];
 }
 
 /**
@@ -231,7 +231,7 @@ static id<IFacade> instance;
  * @param mediator a reference to the <code>IMediator</code>
  */
 -(void)registerMediator:(id<IMediator>)mediator {
-	[view registerMediator:mediator];
+    [view registerMediator:mediator];
 }
 
 /**
@@ -240,7 +240,7 @@ static id<IFacade> instance;
  * @param proxy the <code>IProxy</code> instance to be registered with the <code>Model</code>.
  */
 -(void)registerProxy:(id<IProxy>)proxy {
-	[model registerProxy:proxy];
+    [model registerProxy:proxy];
 }
 
 /**
@@ -249,7 +249,7 @@ static id<IFacade> instance;
  * @param notificationName the name of the <code>INotification</code> to remove the <code>ICommand</code> mapping for
  */
 -(void)removeCommand:(NSString *)notificationName {
-	[controller removeCommand:notificationName];
+    [controller removeCommand:notificationName];
 }
 
 /**
@@ -259,7 +259,7 @@ static id<IFacade> instance;
  * @return the <code>IMediator</code> that was removed from the <code>View</code>
  */
 -(id<IMediator>)removeMediator:(NSString *)mediatorName {
-	return [view removeMediator:mediatorName];
+    return [view removeMediator:mediatorName];
 }
 
 /**
@@ -269,7 +269,7 @@ static id<IFacade> instance;
  * @return the <code>IProxy</code> that was removed from the <code>Model</code>
  */
 -(id<IProxy>)removeProxy:(NSString *)proxyName {
-	return [model removeProxy:proxyName];
+    return [model removeProxy:proxyName];
 }
 
 /**
@@ -279,7 +279,7 @@ static id<IFacade> instance;
  * @return the <code>IMediator</code> previously registered with the given <code>mediatorName</code>.
  */
 -(id<IMediator>)retrieveMediator:(NSString *)mediatorName {
-	return [view retrieveMediator:mediatorName];
+    return [view retrieveMediator:mediatorName];
 }
 
 /**
@@ -289,16 +289,14 @@ static id<IFacade> instance;
  * @return the <code>IProxy</code> instance previously registered with the given <code>proxyName</code>.
  */
 -(id<IProxy>)retrieveProxy:(NSString *)proxyName {
-	return [model retrieveProxy:proxyName];
+    return [model retrieveProxy:proxyName];
 }
 
 -(void)dealloc {
-	self.model = nil;
-	self.controller = nil;
-	self.view = nil;
-	[(id)instance release];
-	instance = nil;
-	[super dealloc];
+    self.model = nil;
+    self.controller = nil;
+    self.view = nil;
+    instance = nil;
 }
 
 @end

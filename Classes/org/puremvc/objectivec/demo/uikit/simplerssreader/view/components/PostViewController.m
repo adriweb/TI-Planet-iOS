@@ -24,17 +24,9 @@
 
 +(PostViewController *)postViewController
 {
-	return 	 [[[PostViewController alloc] initWithNibName:@"PostViewController" bundle:nil] autorelease];
+    return [[PostViewController alloc] initWithNibName:@"PostViewController" bundle:nil];
 }
 
-- (void)dealloc 
-{	
-    [webView release];
-    [pubView release];
-    [articleURL release];
-    [articleTitle release];
-    [super dealloc];
-}
 
 - (void) hideGradientBackground:(UIView*)theView
 {
@@ -51,31 +43,23 @@
 
 -(void)viewDidLoad
 {
-	[super viewDidLoad];
-    [pubView setDelegate:self];
-    [pubView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://adriweb.free.fr/pub.html"]]];
-	pubView.opaque = NO;
-	pubView.backgroundColor = [UIColor clearColor];
-    [self hideGradientBackground:pubView];
-    ((UIScrollView *)[[pubView subviews] objectAtIndex:0]).scrollsToTop = NO;
-    ((UIScrollView *)[[webView subviews] objectAtIndex:0]).scrollsToTop = YES;
+    [super viewDidLoad];
+    ((UIScrollView *)webView.subviews[0]).scrollsToTop = YES;
     // scrolls to top when touching the status bar
     
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionStuff)];        
     self.navigationItem.rightBarButtonItem = anotherButton;
-    [anotherButton release];
 }
 
 - (void) actionStuff {
-	UIActionSheet *actionsheet = [[UIActionSheet alloc] 
+    UIActionSheet *actionsheet = [[UIActionSheet alloc] 
                                   initWithTitle:@"Article TI-Planet"
                                   delegate:self 
                                   cancelButtonTitle:@"Annuler" 
                                   destructiveButtonTitle:nil
                                   otherButtonTitles:@"Voir dans Safari", @"Envoyer par E-mail", @"Partager sur Facebook", nil
-								  ];
-	[actionsheet showFromTabBar:self.tabBarController.tabBar];
-	[actionsheet release];
+                                  ];
+    [actionsheet showFromTabBar:self.tabBarController.tabBar];
     
 }
 
@@ -97,19 +81,17 @@
                 //Set the subject
                 [emailUI setSubject:@"Un article intéressant sur TI-Planet..."];
                 
-                NSString *defaultMessage = [[NSString alloc] initWithFormat:@"Salut, j'ai lu un article intéressant sur <a href=\"http://www.tiplanet.org\">TI-Planet.org</a> : <br /><br />\"%@:\"<br /><a href=\"%@\">%@</a>",articleTitle,articleURL,articleURL];
+                NSString *defaultMessage = [[NSString alloc] initWithFormat:@"Salut, j'ai lu un article intéressant sur <a href=\"https://tiplanet.org\">TI-Planet.org</a> : <br /><br />\"%@:\"<br /><a href=\"%@\">%@</a>",articleTitle,articleURL,articleURL];
                 
                 // Fill out the email body text.
                 [emailUI setMessageBody:defaultMessage isHTML:YES];
                 
                 // Present the mail composition interface.
                 [self presentModalViewController:emailUI animated:YES];
-                [emailUI setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+                emailUI.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
                 
                 //assign the parent view controller as the mail compose view controller delegate
                 emailUI.mailComposeDelegate = self;
-                [defaultMessage release];
-                [emailUI release];
             }
             else
             {
@@ -119,11 +101,10 @@
                                                     cancelButtonTitle:@"OK"
                                                     otherButtonTitles:nil];
                 [alert show];
-                [alert release];
                 
             }
     } else if (buttonIndex == 2) {
-        NSString *tmpStr = [NSString stringWithFormat:@"http://www.facebook.com/sharer.php?u=%@&t=%@",articleURL,articleTitle];
+        NSString *tmpStr = [NSString stringWithFormat:@"https://facebook.com/sharer.php?u=%@&t=%@",articleURL,articleTitle];
         NSString *escaped = [tmpStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:escaped]];
     }
@@ -137,16 +118,16 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView 
-		shouldStartLoadWithRequest:(NSURLRequest *)request 
-		navigationType:(UIWebViewNavigationType)navigationType 
+        shouldStartLoadWithRequest:(NSURLRequest *)request 
+        navigationType:(UIWebViewNavigationType)navigationType 
 {
-	if (navigationType == UIWebViewNavigationTypeLinkClicked) 
-	{
-		// open browser
-		[[UIApplication sharedApplication] openURL:[request URL]];
-		return NO;
-	}
-	return YES;
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) 
+    {
+        // open browser
+        [[UIApplication sharedApplication] openURL:request.URL];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma -
@@ -155,28 +136,25 @@
 
 -(void)newBlogEntry:(EntryVO *) data
 {
-	EntryVO *entryVO = (EntryVO *) [data retain];
-	
-	[self setTitle: entryVO.blogTitle];
+    EntryVO *entryVO = (EntryVO *) data;
+    
+    self.title = entryVO.blogTitle;
     
     articleURL = entryVO.link;
     articleTitle = entryVO.title;
     
-    int theWidth = [[UIScreen mainScreen] bounds].size.width-10;
+    int theWidth = [UIScreen mainScreen].bounds.size.width-10;
     
     NSString *style = [NSString stringWithFormat:@"<style type='text/css'><!--* { font-family: Arial; color: #333; font-size: 1em;}  h1 { font-size: 1.4em; text-shadow: 0px 0px 0px #eee, 1px 1px 0px #707070;} date { color: #666; font-size: .8em; } a { color:#3388BB; text-decoration:underline }  img { max-width:%ipx; height:auto;} --></style>",theWidth];
     
-	[webView loadHTMLString: [NSString stringWithFormat: @"<div>%@<date>%@     -     <a href=\"%@\">Voir la news sur le site</a></date><h1>%@</h1></div><p>%@</p>",
-							  style,
-							  [FormatterUtil formatFeedDateString:  entryVO.dateString 
-														 newFormat: @"dd' 'MMMM' 'yyyy"],
+    [webView loadHTMLString: [NSString stringWithFormat: @"<div>%@<date>%@     -     <a href=\"%@\">Voir la news sur le site</a></date><h1>%@</h1></div><p>%@</p>",
+                              style,
+                              [FormatterUtil formatFeedDateString:  entryVO.dateString 
+                                                         newFormat: @"dd' 'MMMM' 'yyyy"],
                               entryVO.link,
-							  entryVO.title,
-							  entryVO.txt]
-				baseURL:nil];
-	
-	[entryVO release];
-	
+                              entryVO.title,
+                              entryVO.txt]
+                baseURL:nil];
 
 }
 

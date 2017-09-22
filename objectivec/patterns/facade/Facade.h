@@ -33,16 +33,16 @@
  * @see Model, View, Controller, Notification, Mediator, Proxy, SimpleCommand, MacroCommand
  */
 @interface Facade : NSObject <IFacade> {
-	id<IController> controller;
-	id<IModel> model;
-	id<IView> view;
+    id<IController> controller;
+    id<IModel> model;
+    id<IView> view;
 }
 
 @property(nonatomic, retain) id<IController> controller;
 @property(nonatomic, retain) id<IModel> model;
 @property(nonatomic, retain) id<IView> view;
 
--(id)init;
+-(instancetype)init;
 -(void)initializeFacade;
 +(id<IFacade>)getInstance;
 -(void)initializeController;

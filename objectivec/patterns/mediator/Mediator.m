@@ -12,29 +12,29 @@
 
 @synthesize mediatorName, viewComponent;
 
-+(id)mediator {
-	return [[[self alloc] initWithMediatorName:nil viewComponent:nil] autorelease];
++(instancetype)mediator {
+    return [[self alloc] initWithMediatorName:nil viewComponent:nil];
 }
 
 +(id)withMediatorName:(NSString *)mediatorName {
-	return [[[self alloc] initWithMediatorName:mediatorName viewComponent:nil] autorelease];
+    return [[self alloc] initWithMediatorName:mediatorName viewComponent:nil];
 }
 
 +(id)withMediatorName:(NSString *)mediatorName viewComponent:(id)viewComponent {
-	return [[[self alloc] initWithMediatorName:mediatorName viewComponent:viewComponent] autorelease];
+    return [[self alloc] initWithMediatorName:mediatorName viewComponent:viewComponent];
 }
 
 +(id)withViewComponent:(id)viewComponent {
-	return [[[self alloc] initWithMediatorName:nil viewComponent:viewComponent] autorelease];
+    return [[self alloc] initWithMediatorName:nil viewComponent:viewComponent];
 }
 
--(id)initWithMediatorName:(NSString *)_mediatorName viewComponent:(id)_viewComponent {
-	if (self = [super init]) {
-		self.mediatorName = (_mediatorName == nil) ? [[self class] NAME] : _mediatorName;
-		self.viewComponent = _viewComponent;
-		[self initializeMediator];
-	}
-	return self;
+-(instancetype)initWithMediatorName:(NSString *)_mediatorName viewComponent:(id)_viewComponent {
+    if (self = [super init]) {
+        self.mediatorName = (_mediatorName == nil) ? [[self class] NAME] : _mediatorName;
+        self.viewComponent = _viewComponent;
+        [self initializeMediator];
+    }
+    return self;
 }
 
 /**
@@ -46,7 +46,7 @@
  * will not have a need to be dynamically named.</P>
  */
 +(NSString *)NAME {
-	return @"Mediator";
+    return @"Mediator";
 }
 
 /**
@@ -79,7 +79,7 @@
  * @return Array the list of <code>INotification</code> names 
  */
 -(NSArray *)listNotificationInterests {
-	return [NSArray array];
+    return @[];
 }
 
 /**
@@ -93,9 +93,8 @@
 -(void)onRemove {}
 
 -(void)dealloc {
-	self.mediatorName = nil;
-	self.viewComponent = nil;
-	[super dealloc];
+    self.mediatorName = nil;
+    self.viewComponent = nil;
 }
 
 @end

@@ -27,12 +27,12 @@
  * @see Mediator, Observer, Notification
  */
 @interface View : NSObject <IView> {
-	NSMutableDictionary *mediatorMap, *observerMap;
+    NSMutableDictionary *mediatorMap, *observerMap;
 }
 
 @property(nonatomic, retain) NSMutableDictionary *mediatorMap, *observerMap;
 
--(id)init;
+-(instancetype)init;
 -(void)initializeView;
 +(id<IView>)getInstance;
 

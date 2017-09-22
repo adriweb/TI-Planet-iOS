@@ -17,10 +17,6 @@
 @synthesize headline;
 @synthesize label;
 
-- (void)dealloc 
-{
-    [super dealloc];
-}
 
 
 @end

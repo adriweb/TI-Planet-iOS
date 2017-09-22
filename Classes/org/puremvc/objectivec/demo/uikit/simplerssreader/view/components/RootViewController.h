@@ -23,7 +23,7 @@
 @end
 
 
-@interface RootViewController : UITableViewController
+@interface RootViewController : PullRefreshTableViewController
 {	
 	PostViewController *postViewController;
 	NSMutableArray *blogEntries;

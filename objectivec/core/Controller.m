@@ -10,6 +10,7 @@
 #import "View.h"
 #import "IObserver.h"
 #import "Observer.h"
+#import "ICommand.h"
 
 static id<IController> instance;
 
@@ -29,14 +30,14 @@ static id<IController> instance;
  * @throws NSException if Singleton instance has already been constructed
  * 
  */
--(id)init {
-	if (instance != nil) {
-		//[NSException raise:@"Controller Singleton already constructed! Use getInstance instead." format:nil];
-	} else if (self = [super init]) {
-		self.commandMap = [NSMutableDictionary dictionary];
-		[self initializeController];
-	}
-	return self;
+-(instancetype)init {
+    if (instance != nil) {
+        [NSException raise:@"Controller Singleton already constructed! Use getInstance instead." format:nil];
+    } else if (self = [super init]) {
+        self.commandMap = [NSMutableDictionary dictionary];
+        [self initializeController];
+    }
+    return self;
 }
 
 /**
@@ -50,16 +51,16 @@ static id<IController> instance;
  * following way:</P>
  * 
  * @code
- *		// ensure that the Controller is talking to my IView implementation
- *		-(void)initializeController {
- *			self.view = [MyView getInstance];
- *		}
+ *        // ensure that the Controller is talking to my IView implementation
+ *        -(void)initializeController {
+ *            self.view = [MyView getInstance];
+ *        }
  * @endcode
  * 
  * @return void
  */
 -(void)initializeController {
-	self.view = [View getInstance];
+    self.view = [View getInstance];
 }
 
 /**
@@ -68,10 +69,10 @@ static id<IController> instance;
  * @return the Singleton instance of <code>Controller</code>
  */
 +(id<IController>)getInstance {
-	if (instance == nil) {
-		instance = [[self alloc] init];
-	}
-	return instance;
+    if (instance == nil) {
+        instance = [[self alloc] init];
+    }
+    return instance;
 }
 
 /**
@@ -81,11 +82,11 @@ static id<IController> instance;
  * @param notification an <code>INotification</code>
  */
 -(void)executeCommand:(id<INotification>)notification {
-	Class commandClassRef = [commandMap objectForKey:[notification name]];
-	if (commandClassRef == nil) {
-		return;
-	}
-	[[[[commandClassRef alloc] init] autorelease] execute:notification];
+    Class commandClassRef = commandMap[[notification name]];
+    if (commandClassRef == nil) {
+        return;
+    }
+    [(id<ICommand>)[[commandClassRef alloc] init] execute:notification];
 }
 
 /**
@@ -95,7 +96,7 @@ static id<IController> instance;
  * @return whether a Command is currently registered for the given <code>notificationName</code>.
  */
 -(BOOL)hasCommand:(NSString *)notificationName {
-	return [commandMap objectForKey:notificationName] != nil;
+    return commandMap[notificationName] != nil;
 }
 
 /**
@@ -114,11 +115,11 @@ static id<IController> instance;
  * @param commandClassRef the <code>Class</code> of the <code>ICommand</code>
  */
 -(void)registerCommand:(NSString *)notificationName commandClassRef:(Class)commandClassRef {
-	if ([commandMap objectForKey:notificationName] == nil) {
-		id<IObserver> observer = [Observer withNotifyMethod:@selector(executeCommand:) notifyContext:self];
-		[view registerObserver:notificationName observer:observer];
-	}
-	[commandMap setObject:commandClassRef forKey:notificationName];
+    if (commandMap[notificationName] == nil) {
+        id<IObserver> observer = [Observer withNotifyMethod:@selector(executeCommand:) notifyContext:self];
+        [view registerObserver:notificationName observer:observer];
+    }
+    commandMap[notificationName] = commandClassRef;
 }
 
 /**
@@ -127,18 +128,16 @@ static id<IController> instance;
  * @param notificationName the name of the <code>INotification</code> to remove the <code>ICommand</code> mapping for
  */
 -(void)removeCommand:(NSString *)notificationName {
-	if ([self hasCommand:notificationName]) {
-		[view removeObserver:notificationName notifyContext:self];
-		[commandMap removeObjectForKey:notificationName];
-	}
+    if ([self hasCommand:notificationName]) {
+        [view removeObserver:notificationName notifyContext:self];
+        [commandMap removeObjectForKey:notificationName];
+    }
 }
 
 -(void)dealloc {
-	self.commandMap = nil;
-	self.view = nil;
-	[(id)instance release];
-	instance = nil;
-	[super dealloc];
+    self.commandMap = nil;
+    self.view = nil;
+    instance = nil;
 }
 
 @end

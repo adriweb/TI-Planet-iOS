@@ -12,33 +12,33 @@
 
 @synthesize data, proxyName;
 
-+(id)proxy {
-	return [[[self alloc] initWithProxyName:nil data:nil] autorelease];
++(instancetype)proxy {
+    return [[self alloc] initWithProxyName:nil data:nil];
 }
 
 +(id)withProxyName:(NSString *)proxyName {
-	return [[[self alloc] initWithProxyName:proxyName data:nil] autorelease];
+    return [[self alloc] initWithProxyName:proxyName data:nil];
 }
 
 +(id)withProxyName:(NSString *)proxyName data:(id)data {
-	return [[[self alloc] initWithProxyName:proxyName data:data] autorelease];
+    return [[self alloc] initWithProxyName:proxyName data:data];
 }
 
 +(id)withData:(id)data {
-	return [[[self alloc] initWithProxyName:nil data:data] autorelease];
+    return [[self alloc] initWithProxyName:nil data:data];
 }
 
--(id)initWithProxyName:(NSString *)_proxyName data:(id)_data {
-	if (self = [super init]) {
-		self.proxyName = (_proxyName == nil) ? [[self class] NAME] : _proxyName;
-		self.data = _data;
-		[self initializeProxy];
-	}
-	return self;
+-(instancetype)initWithProxyName:(NSString *)_proxyName data:(id)_data {
+    if (self = [super init]) {
+        self.proxyName = (_proxyName == nil) ? [[self class] NAME] : _proxyName;
+        self.data = _data;
+        [self initializeProxy];
+    }
+    return self;
 }
 
 +(NSString *)NAME {
-	return @"Proxy";
+    return @"Proxy";
 }
 
 /**
@@ -65,9 +65,8 @@
 -(void)onRemove {}
 
 -(void)dealloc {
-	self.data = nil;
-	self.proxyName = nil;
-	[super dealloc];
+    self.data = nil;
+    self.proxyName = nil;
 }
 
 @end

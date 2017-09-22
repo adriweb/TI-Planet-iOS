@@ -110,23 +110,22 @@
 // Since NSAssert and NSCAssert are used in this code, 
 // I recommend you set NS_BLOCK_ASSERTIONS=1 in the release versions of your projects.
 
-enum {
-	
-	// DDG NetworkStatus Constant Names.
-	kNotReachable = 0, // Apple's code depends upon 'NotReachable' being the same value as 'NO'.
-	kReachableViaWWAN, // Switched order from Apple's enum. WWAN is active before WiFi.
-	kReachableViaWiFi
-	
+typedef NS_ENUM(uint32_t, NetworkStatus) {
+    
+    // DDG NetworkStatus Constant Names.
+    kNotReachable = 0, // Apple's code depends upon 'NotReachable' being the same value as 'NO'.
+    kReachableViaWWAN, // Switched order from Apple's enum. WWAN is active before WiFi.
+    kReachableViaWiFi
+    
 };
-typedef	uint32_t NetworkStatus;
 
 enum {
-	
-	// Apple NetworkStatus Constant Names.
-	NotReachable     = kNotReachable,
-	ReachableViaWiFi = kReachableViaWiFi,
-	ReachableViaWWAN = kReachableViaWWAN
-	
+    
+    // Apple NetworkStatus Constant Names.
+    NotReachable     = kNotReachable,
+    ReachableViaWiFi = kReachableViaWiFi,
+    ReachableViaWWAN = kReachableViaWWAN
+    
 };
 
 
@@ -135,17 +134,17 @@ extern NSString *const kLocalWiFiConnection;
 extern NSString *const kReachabilityChangedNotification;
 
 @interface Reachability: NSObject {
-	
+    
 @private
-	NSString                *key_;
-	SCNetworkReachabilityRef reachabilityRef;
+    NSString                *key_;
+    SCNetworkReachabilityRef reachabilityRef;
 
 }
 
 @property (copy) NSString *key; // Atomic because network operations are asynchronous.
 
 // Designated Initializer.
-- (Reachability *) initWithReachabilityRef: (SCNetworkReachabilityRef) ref;
+- (Reachability *) initWithReachabilityRef: (SCNetworkReachabilityRef) ref NS_DESIGNATED_INITIALIZER;
 
 // Use to check the reachability of a particular host name. 
 + (Reachability *) reachabilityWithHostName: (NSString*) hostName;
@@ -161,33 +160,32 @@ extern NSString *const kReachabilityChangedNotification;
 + (Reachability *) reachabilityForLocalWiFi;
 
 //Start listening for reachability notifications on the current run loop.
-- (BOOL) startNotifier;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL startNotifier;
 - (void)  stopNotifier;
 
 // Comparison routines to enable choosing actions in a notification.
 - (BOOL) isEqual: (Reachability *) r;
 
 // These are the status tests.
-- (NetworkStatus) currentReachabilityStatus;
+@property (NS_NONATOMIC_IOSONLY, readonly) NetworkStatus currentReachabilityStatus;
 
 // The main direct test of reachability.
-- (BOOL) isReachable;
+@property (NS_NONATOMIC_IOSONLY, getter=isReachable, readonly) BOOL reachable;
 
 // WWAN may be available, but not active until a connection has been established.
 // WiFi may require a connection for VPN on Demand.
-- (BOOL) isConnectionRequired; // Identical DDG variant.
-- (BOOL)   connectionRequired; // Apple's routine.
+@property (NS_NONATOMIC_IOSONLY, getter=isConnectionRequired, readonly) BOOL connectionRequired; // Identical DDG variant.
 
 // Dynamic, on demand connection?
-- (BOOL) isConnectionOnDemand;
+@property (NS_NONATOMIC_IOSONLY, getter=isConnectionOnDemand, readonly) BOOL connectionOnDemand;
 
 // Is user intervention required?
-- (BOOL) isInterventionRequired;
+@property (NS_NONATOMIC_IOSONLY, getter=isInterventionRequired, readonly) BOOL interventionRequired;
 
 // Routines for specific connection testing by your app.
-- (BOOL) isReachableViaWWAN;
-- (BOOL) isReachableViaWiFi;
+@property (NS_NONATOMIC_IOSONLY, getter=isReachableViaWWAN, readonly) BOOL reachableViaWWAN;
+@property (NS_NONATOMIC_IOSONLY, getter=isReachableViaWiFi, readonly) BOOL reachableViaWiFi;
 
-- (SCNetworkReachabilityFlags) reachabilityFlags;
+@property (NS_NONATOMIC_IOSONLY, readonly) SCNetworkReachabilityFlags reachabilityFlags;
 
 @end

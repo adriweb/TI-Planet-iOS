@@ -19,45 +19,35 @@
 
 +(NSString *) formatFeedDateString:(NSString *) feedDateString newFormat:(NSString *) newFormat
 {
-	
-	//create formatter and format
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-
-	// we have to force the locale to avoid unexpected issues formatting data, e.g. on an German iPhone ;)
-	NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-	[dateFormatter setLocale:[NSLocale systemLocale]];
-
-	
-	//[dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'+01:00'"];
-    // from php :  Y-m-d\TH:i:s  (exemple : 2013-02-04T00:05:37+01:00 )
     
-	NSDate *formattedDate = [dateFormatter dateFromString: feedDateString];
-	
-	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-	
-	if (newFormat != nil )
-	{
-		[outputFormatter setDateFormat: newFormat];
-	}
-	else
-	{
-		[outputFormatter setDateFormat:@"dd MMM yyyy"];
-	}
-	
-	NSString *formattedDateString = [outputFormatter stringFromDate:formattedDate];
-	
-	[dateFormatter release];
-	dateFormatter = nil;
+    //create formatter and format
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 
-	[usLocale release];
-	usLocale = nil;
-	
-	[outputFormatter release];
-	outputFormatter = nil;
-	
-	return formattedDateString;
+    // we have to force the locale to avoid unexpected issues formatting data, e.g. on an German iPhone ;)
+    // NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    dateFormatter.locale = [NSLocale systemLocale];
 
-
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
+    
+    NSDate *formattedDate = [dateFormatter dateFromString: feedDateString];
+    
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    
+    NSString *formattedDateString;
+    if (newFormat != nil)
+    {
+        outputFormatter.dateFormat = newFormat;
+        formattedDateString = [outputFormatter stringFromDate:formattedDate];
+    }
+    else
+    {
+        formattedDateString = @"";
+    }
+        
+    dateFormatter = nil;
+    outputFormatter = nil;
+    
+    return formattedDateString;
 }
+
 @end

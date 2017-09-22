@@ -34,8 +34,8 @@
  * 
  */
 @interface Notification : NSObject <INotification> {
-	NSString *name, *type;
-	id body;
+    NSString *name, *type;
+    id body;
 }
 
 @property(nonatomic, retain) NSString *name;
@@ -46,7 +46,7 @@
 +(id)withName:(NSString *)nam;
 +(id)withName:(NSString *)name body:(id)body;
 +(id)withName:(NSString *)name type:(NSString *)type;
--(id)initWithName:(NSString *)name body:(id)body type:(NSString *)type;
--(NSString *)description;
+-(instancetype)initWithName:(NSString *)name body:(id)body type:(NSString *)type NS_DESIGNATED_INITIALIZER;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *description;
 
 @end

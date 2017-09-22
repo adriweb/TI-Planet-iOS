@@ -13,7 +13,7 @@
 @synthesize resultLabel;
 
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     return self;
@@ -38,24 +38,21 @@
         [emailUI setSubject:@"TI-Planet Contact"];
         
         // Set up the recipients.
-        NSArray *toRecipients = [NSArray arrayWithObjects:@"info@tiplanet.org",
-                                 nil];
+        NSArray *toRecipients = @[@"info@tiplanet.org"];
         
         [emailUI setToRecipients:toRecipients];        
         
-        NSString *defaultMessage = [[NSString alloc] initWithFormat:@"\n\n\n\n\nAppareil : %@ (%@)",[[UIDevice currentDevice] name], [[UIDevice currentDevice] systemVersion]];
+        NSString *defaultMessage = [[NSString alloc] initWithFormat:@"\n\n\n\n\nAppareil : %@ (%@)",[UIDevice currentDevice].name, [UIDevice currentDevice].systemVersion];
         
         // Fill out the email body text.
         [emailUI setMessageBody:defaultMessage isHTML:NO];
         
         // Present the mail composition interface.
         [self presentModalViewController:emailUI animated:YES];
-        [emailUI setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        emailUI.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
         //assign the parent view controller as the mail compose view controller delegate
         emailUI.mailComposeDelegate = self;
-        [defaultMessage release];
-        [emailUI release];
     }
     else
     {
@@ -65,7 +62,6 @@
                                             cancelButtonTitle:@"OK"
                                             otherButtonTitles:nil];
         [alert show];
-        [alert release];
         
     }
     
@@ -100,9 +96,5 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-
-- (void) dealloc {
-    [super dealloc];
-}
 
 @end

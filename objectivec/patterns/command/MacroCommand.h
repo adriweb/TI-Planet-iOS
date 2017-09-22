@@ -37,14 +37,14 @@
  * @see Controller, Notification, SimpleCommand
  */
 @interface MacroCommand : Notifier <ICommand> {
-	NSMutableArray *subCommands;
+    NSMutableArray *subCommands;
 }
 
 @property(nonatomic, retain) NSMutableArray *subCommands;
 
--(id)init;
+-(instancetype)init;
 -(void)initializeMacroCommand;
 -(void)addSubCommand:(Class)commandClassRef;
-+(id)command;
++(instancetype)command;
 
 @end

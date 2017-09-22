@@ -40,14 +40,14 @@
  * 
  * @return the <code>IMediator</code> instance name
  */
--(NSString *)mediatorName;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *mediatorName;
 
 /**
  * Get the <code>IMediator</code>'s view component.
  * 
  * @return id the view component
  */
--(id)viewComponent;
+@property (NS_NONATOMIC_IOSONLY, strong) id viewComponent;
 
 /**
  * Handle an <code>INotification</code>.
@@ -61,7 +61,7 @@
  * 
  * @return an <code>Array</code> of the <code>INotification</code> names this <code>IMediator</code> has an interest in.
  */
--(NSArray *)listNotificationInterests;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *listNotificationInterests;
 
 /**
  * Called by the View when the Mediator is registered
@@ -78,7 +78,6 @@
  * 
  * @param viewComponent the view component
  */
--(void)setViewComponent:(id)viewComponent;
 
 @end
 

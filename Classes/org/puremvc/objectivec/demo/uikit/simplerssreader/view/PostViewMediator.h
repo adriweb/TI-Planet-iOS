@@ -14,7 +14,7 @@
 #import "Mediator.h"
 #import "BlogProxy.h"
 
-@interface PostViewMediator : Mediator 
+@interface PostViewMediator : Mediator
 {
 	BlogProxy *blogProxy;
 }

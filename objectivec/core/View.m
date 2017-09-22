@@ -28,15 +28,15 @@ static id<IView> instance;
  * @throws NSException if Singleton instance has already been constructed
  * 
  */
--(id)init {
-	if (instance != nil) {
-		//[NSException raise:@"View Singleton already constructed! Use getInstance instead." format:nil];
-	} else if (self = [super init]) {
-		self.mediatorMap = [NSMutableDictionary dictionary];
-		self.observerMap = [NSMutableDictionary dictionary];
-		[self initializeView];
-	}
-	return self;
+-(instancetype)init {
+    if (instance != nil) {
+        [NSException raise:@"View Singleton already constructed! Use getInstance instead." format:nil];
+    } else if (self = [super init]) {
+        self.mediatorMap = [NSMutableDictionary dictionary];
+        self.observerMap = [NSMutableDictionary dictionary];
+        [self initializeView];
+    }
+    return self;
 }
 
 /**
@@ -59,10 +59,10 @@ static id<IView> instance;
  * @return the Singleton instance of <code>View</code>
  */
 +(id<IView>)getInstance {
-	if (instance == nil) {
-		instance = [[self alloc] init];
-	}
-	return instance;
+    if (instance == nil) {
+        instance = [[self alloc] init];
+    }
+    return instance;
 }
 
 /**
@@ -72,7 +72,7 @@ static id<IView> instance;
  * @return whether a Mediator is registered with the given <code>mediatorName</code>.
  */
 -(BOOL)hasMediator:(NSString *)mediatorName {
-	return [mediatorMap objectForKey:mediatorName] != nil;
+    return mediatorMap[mediatorName] != nil;
 }
 
 /**
@@ -86,16 +86,16 @@ static id<IView> instance;
  * @param notification the <code>INotification</code> to notify <code>IObservers</code> of.
  */
 -(void)notifyObservers:(id<INotification>)notification {
-	NSMutableArray *observers = [observerMap objectForKey:[notification name]];
-	NSMutableArray *workingObservers = [NSMutableArray array];
-	if (observers != nil) {
-		for (id<IObserver> observer in observers) {
-			[workingObservers addObject:observer];
-		}
-		for (id<IObserver> observer in workingObservers) {
-			[observer notifyObserver:notification];
-		}
-	}
+    NSMutableArray *observers = observerMap[[notification name]];
+    NSMutableArray *workingObservers = [NSMutableArray array];
+    if (observers != nil) {
+        for (id<IObserver> observer in observers) {
+            [workingObservers addObject:observer];
+        }
+        for (id<IObserver> observer in workingObservers) {
+            [observer notifyObserver:notification];
+        }
+    }
 }
 
 /**
@@ -115,18 +115,18 @@ static id<IView> instance;
  * @param mediator a reference to the <code>IMediator</code> instance
  */
 -(void)registerMediator:(id<IMediator>)mediator {
-	if ([mediatorMap objectForKey:[mediator mediatorName]] != nil) {
-		return;
-	}
-	[mediatorMap setObject:mediator	forKey:[mediator mediatorName]];
-	NSArray *interests = [mediator listNotificationInterests];
-	if ([interests count] > 0) {
-		id<IObserver> observer = [Observer withNotifyMethod:@selector(handleNotification:) notifyContext:mediator];
-		for (NSString *notificationName in interests) {
-			[self registerObserver:notificationName observer:observer];
-		}
-	}
-	[mediator onRegister];
+    if (mediatorMap[[mediator mediatorName]] != nil) {
+        return;
+    }
+    mediatorMap[[mediator mediatorName]] = mediator;
+    NSArray *interests = [mediator listNotificationInterests];
+    if (interests.count > 0) {
+        id<IObserver> observer = [Observer withNotifyMethod:@selector(handleNotification:) notifyContext:mediator];
+        for (NSString *notificationName in interests) {
+            [self registerObserver:notificationName observer:observer];
+        }
+    }
+    [mediator onRegister];
 }
 
 /**
@@ -137,12 +137,12 @@ static id<IView> instance;
  * @param observer the <code>IObserver</code> to register
  */
 -(void)registerObserver:(NSString *)notificationName observer:(id<IObserver>)observer {
-	NSMutableArray *observers = [observerMap objectForKey:notificationName];
-	if (observers == nil) {
-		observers = [NSMutableArray array];
-		[observerMap setObject:observers forKey:notificationName];
-	} 
-	[observers addObject:observer];
+    NSMutableArray *observers = observerMap[notificationName];
+    if (observers == nil) {
+        observers = [NSMutableArray array];
+        observerMap[notificationName] = observers;
+    } 
+    [observers addObject:observer];
 }
 
 /**
@@ -152,17 +152,17 @@ static id<IView> instance;
  * @return the <code>IMediator</code> that was removed from the <code>View</code>
  */
 -(id<IMediator>)removeMediator:(NSString *)mediatorName {
-	id<IMediator> mediator = [mediatorMap objectForKey:mediatorName];
-	if (mediator != nil) {
-		NSArray *interests = [mediator listNotificationInterests];
-		for (NSString *notificationName in interests) {
-			[self removeObserver:notificationName notifyContext:mediator];
-		}
-		[mediator onRemove];
-		[mediator setViewComponent:nil];
-		[mediatorMap removeObjectForKey:mediatorName];
-	}
-	return mediator;
+    id<IMediator> mediator = mediatorMap[mediatorName];
+    if (mediator != nil) {
+        NSArray *interests = [mediator listNotificationInterests];
+        for (NSString *notificationName in interests) {
+            [self removeObserver:notificationName notifyContext:mediator];
+        }
+        [mediator onRemove];
+        [mediator setViewComponent:nil];
+        [mediatorMap removeObjectForKey:mediatorName];
+    }
+    return mediator;
 }
 
 /**
@@ -172,18 +172,18 @@ static id<IView> instance;
  * @param notifyContext remove the observer with this object as its notifyContext
  */
 -(void)removeObserver:(NSString *)notificationName notifyContext:(id)notifyContext {
-	NSMutableArray *observers = [observerMap objectForKey:notificationName];
-	if (observers != nil) {
-		for (id<IObserver> observer in observers) {
-			if ([observer compareNotifyContext:notifyContext]) {
-				[observers removeObject:observer];
-				break;
-			}
-		}
-		if ([observers count] == 0) {
-			[observerMap removeObjectForKey:notificationName];
-		}
-	}
+    NSMutableArray *observers = observerMap[notificationName];
+    if (observers != nil) {
+        for (id<IObserver> observer in observers) {
+            if ([observer compareNotifyContext:notifyContext]) {
+                [observers removeObject:observer];
+                break;
+            }
+        }
+        if (observers.count == 0) {
+            [observerMap removeObjectForKey:notificationName];
+        }
+    }
 }
 
 /**
@@ -193,15 +193,13 @@ static id<IView> instance;
  * @return the <code>IMediator</code> instance previously registered with the given <code>mediatorName</code>.
  */
 -(id<IMediator>)retrieveMediator:(NSString *)mediatorName {
-	return [mediatorMap objectForKey:mediatorName];
+    return mediatorMap[mediatorName];
 }
 
 -(void)dealloc {
-	self.mediatorMap = nil;
-	self.observerMap = nil;
-	[(id)instance release];
-	instance = nil;
-	[super dealloc];
+    self.mediatorMap = nil;
+    self.observerMap = nil;
+    instance = nil;
 }
 
 @end

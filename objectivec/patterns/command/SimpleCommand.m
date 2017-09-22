@@ -14,8 +14,8 @@
 /**
  * Static Convenience Constructor. 
  */
-+(id)command {
-	return [[[self alloc] init] autorelease];
++(instancetype)command {
+    return [[self alloc] init];
 }
 
 /**

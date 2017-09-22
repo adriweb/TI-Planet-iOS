@@ -17,9 +17,8 @@
 @interface PostViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 {
 	IBOutlet UIWebView *webView;
-    IBOutlet UIWebView *pubView;
-    NSString *articleURL;
-    NSString *articleTitle;
+    __unsafe_unretained NSString *articleURL;
+    __unsafe_unretained NSString *articleTitle;
 }
 
 +(PostViewController *)postViewController;
