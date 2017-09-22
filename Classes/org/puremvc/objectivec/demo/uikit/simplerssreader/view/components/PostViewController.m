@@ -87,7 +87,7 @@
                 [emailUI setMessageBody:defaultMessage isHTML:YES];
                 
                 // Present the mail composition interface.
-                [self presentModalViewController:emailUI animated:YES];
+                [self presentViewController:emailUI animated:YES completion:NULL];
                 emailUI.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
                 
                 //assign the parent view controller as the mail compose view controller delegate
@@ -114,7 +114,7 @@
           didFinishWithResult:(MFMailComposeResult)result
                         error:(NSError *)error
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (BOOL)webView:(UIWebView *)webView 
