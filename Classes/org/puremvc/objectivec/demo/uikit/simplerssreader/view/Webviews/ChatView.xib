@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
@@ -9,47 +12,22 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatViewController">
             <connections>
                 <outlet property="ChatWebView" destination="52" id="66"/>
-                <outlet property="pageTitle" destination="53" id="63"/>
                 <outlet property="view" destination="50" id="64"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="50" userLabel="View">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView multipleTouchEnabled="YES" contentMode="scaleToFill" scalesPageToFit="YES" id="52">
-                    <rect key="frame" x="0.0" y="43" width="375" height="624"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <webView multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="52">
+                    <rect key="frame" x="0.0" y="43" width="320" height="525"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="65"/>
                     </connections>
                 </webView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="51">
-                    <rect key="frame" x="0.0" y="-1" width="375" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <items>
-                        <barButtonItem title="&lt;" id="58">
-                            <connections>
-                                <action selector="goBack" destination="52" id="59"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem title="&gt;" id="57">
-                            <connections>
-                                <action selector="goForward" destination="52" id="61"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="55"/>
-                        <barButtonItem title="Item" style="plain" id="53"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="54"/>
-                        <barButtonItem systemItem="refresh" id="56">
-                            <connections>
-                                <action selector="reload" destination="52" id="60"/>
-                            </connections>
-                        </barButtonItem>
-                    </items>
-                </toolbar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </view>

@@ -10,12 +10,74 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/org/puremvc/objectivec/demo/uikit/simplerssreader/service/BlogService.m"
-            timestampString = "527800532.913438"
+            timestampString = "527812491.421264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "-getBlogData:"
+            endingLineNumber = "199">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/org/puremvc/objectivec/demo/uikit/simplerssreader/view/PullRefreshTableViewController.m"
+            timestampString = "527809451.360388"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-stopLoading"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/org/puremvc/objectivec/demo/uikit/simplerssreader/view/PullRefreshTableViewController.m"
+            timestampString = "527809451.360686"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-refresh"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/org/puremvc/objectivec/demo/uikit/simplerssreader/view/PullRefreshTableViewController.m"
+            timestampString = "527809451.360792"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "-startLoading"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/org/puremvc/objectivec/demo/uikit/simplerssreader/view/PullRefreshTableViewController.m"
+            timestampString = "527809451.360886"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "-stopLoadingComplete:finished:context:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

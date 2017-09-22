@@ -50,7 +50,6 @@
 		7A7F39591411850600701BCE /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F39581411850600701BCE /* GradientButton.m */; };
 		7A7F395B14118B9400701BCE /* BigLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F395A14118B9400701BCE /* BigLogo.png */; };
 		7AE755E0140FEABA008B632C /* BlogEntryCell-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE755DF140FEABA008B632C /* BlogEntryCell-iPad.xib */; };
-		7AE755E8140FED41008B632C /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE755E7140FED41008B632C /* PullRefreshTableViewController.m */; };
 		7AE755EA140FEE44008B632C /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE755E9140FEE44008B632C /* arrow.png */; };
 		7AE755EC140FEE56008B632C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE755EB140FEE56008B632C /* QuartzCore.framework */; };
 		7AE755F71410196F008B632C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE755F61410196F008B632C /* Reachability.m */; };
@@ -164,8 +163,6 @@
 		7A7F39581411850600701BCE /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientButton.m; path = ../../../../../../../../GradientButton.m; sourceTree = "<group>"; };
 		7A7F395A14118B9400701BCE /* BigLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigLogo.png; sourceTree = "<group>"; };
 		7AE755DF140FEABA008B632C /* BlogEntryCell-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "BlogEntryCell-iPad.xib"; path = "iPad/BlogEntryCell-iPad.xib"; sourceTree = "<group>"; };
-		7AE755E6140FED40008B632C /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
-		7AE755E7140FED41008B632C /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
 		7AE755E9140FEE44008B632C /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		7AE755EB140FEE56008B632C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7AE755F51410196F008B632C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -269,8 +266,6 @@
 		040CE2280F3E1E9500FCABD0 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				7AE755E6140FED40008B632C /* PullRefreshTableViewController.h */,
-				7AE755E7140FED41008B632C /* PullRefreshTableViewController.m */,
 				7A7F39571411850600701BCE /* GradientButton.h */,
 				7A7F39581411850600701BCE /* GradientButton.m */,
 				040CE2290F3E1E9500FCABD0 /* components */,
@@ -574,7 +569,7 @@
 				LastUpgradeCheck = 0900;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = Z3B7V95FNU;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -653,7 +648,6 @@
 				09FB74CF1F757DDE005641EF /* Controller.m in Sources */,
 				040CE23B0F3E1E9600FCABD0 /* RootViewMediator.m in Sources */,
 				040CE24A0F3E20EB00FCABD0 /* BlogEntryCell.m in Sources */,
-				7AE755E8140FED41008B632C /* PullRefreshTableViewController.m in Sources */,
 				7AE755F71410196F008B632C /* Reachability.m in Sources */,
 				7AE7560214101F07008B632C /* ForumViewController.m in Sources */,
 				7A54CF5A1410D6FA00C4DAF9 /* AboutViewController.m in Sources */,
@@ -673,8 +667,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = Z3B7V95FNU;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -687,8 +681,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Adriweb.TIPlanet;
 				PRODUCT_NAME = "TI-Planet iOS";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -700,8 +693,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = Z3B7V95FNU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -712,8 +705,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Adriweb.TIPlanet;
 				PRODUCT_NAME = "TI-Planet iOS";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -740,8 +732,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Adrien Bertrand (RT4U9BJG7S)";
+				DEVELOPMENT_TEAM = Z3B7V95FNU;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -756,8 +748,6 @@
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
@@ -783,8 +773,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Adrien Bertrand (RT4U9BJG7S)";
+				DEVELOPMENT_TEAM = Z3B7V95FNU;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -797,8 +787,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
