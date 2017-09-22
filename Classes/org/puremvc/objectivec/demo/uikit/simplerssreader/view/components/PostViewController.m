@@ -57,7 +57,7 @@
                                   delegate:self 
                                   cancelButtonTitle:@"Annuler" 
                                   destructiveButtonTitle:nil
-                                  otherButtonTitles:@"Voir dans Safari", @"Envoyer par E-mail", @"Partager sur Facebook", nil
+                                  otherButtonTitles:@"Voir dans Safari", @"Partager...", nil
                                   ];
     [actionsheet showFromTabBar:self.tabBarController.tabBar];
     
@@ -68,45 +68,18 @@
     if (buttonIndex == 0) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:articleURL]];
     } else if (buttonIndex == 1) {
-            [actionSheet dismissWithClickedButtonIndex:3 animated:YES];
-            Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
-            if ([mailClass canSendMail]) {
-                
-                //create an instance of MFMailComposeViewController
-                MFMailComposeViewController *emailUI = [[MFMailComposeViewController alloc] init];
-                
-                
-                //Set the standard interface fields with initial values
-                
-                //Set the subject
-                [emailUI setSubject:@"Un article intéressant sur TI-Planet..."];
-                
-                NSString *defaultMessage = [[NSString alloc] initWithFormat:@"Salut, j'ai lu un article intéressant sur <a href=\"https://tiplanet.org\">TI-Planet.org</a> : <br /><br />\"%@:\"<br /><a href=\"%@\">%@</a>",articleTitle,articleURL,articleURL];
-                
-                // Fill out the email body text.
-                [emailUI setMessageBody:defaultMessage isHTML:YES];
-                
-                // Present the mail composition interface.
-                [self presentViewController:emailUI animated:YES completion:NULL];
-                emailUI.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-                
-                //assign the parent view controller as the mail compose view controller delegate
-                emailUI.mailComposeDelegate = self;
-            }
-            else
-            {
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur"
-                                                              message:@"Impossible de démarrer le mailer intégré."
-                                                             delegate:self
-                                                    cancelButtonTitle:@"OK"
-                                                    otherButtonTitles:nil];
-                [alert show];
-                
-            }
-    } else if (buttonIndex == 2) {
-        NSString *tmpStr = [NSString stringWithFormat:@"https://facebook.com/sharer.php?u=%@&t=%@",articleURL,articleTitle];
-        NSString *escaped = [tmpStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:escaped]];
+        NSMutableArray *sharingItems = [NSMutableArray new];
+        [sharingItems addObject:articleTitle];
+        [sharingItems addObject:articleURL];
+        
+        UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            activityController.popoverPresentationController.barButtonItem = self.navigationItem.rightBarButtonItem;
+            [self presentViewController:activityController animated:YES completion:nil];
+        }
+        
+        [self presentViewController:activityController animated:YES completion:nil];
     }
 }
 
