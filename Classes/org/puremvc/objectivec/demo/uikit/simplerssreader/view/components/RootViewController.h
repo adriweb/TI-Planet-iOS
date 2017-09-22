@@ -13,7 +13,6 @@
 #import <UIKit/UIKit.h>
 #import "PostViewController.h"
 #import "EntryVO.h"
-#import "PullRefreshTableViewController.h"
 
 @protocol RootViewControllerDelegate
 
@@ -23,7 +22,7 @@
 @end
 
 
-@interface RootViewController : PullRefreshTableViewController
+@interface RootViewController : UITableViewController
 {	
 	PostViewController *postViewController;
 	NSMutableArray *blogEntries;
