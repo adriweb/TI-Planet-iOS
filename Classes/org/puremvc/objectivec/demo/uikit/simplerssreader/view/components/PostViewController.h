@@ -14,11 +14,12 @@
 #import "EntryVO.h"
 #import <MessageUI/MessageUI.h>
 
-@interface PostViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
+@interface PostViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate>
 {
 	IBOutlet UIWebView *webView;
     __unsafe_unretained NSString *articleURL;
     __unsafe_unretained NSString *articleTitle;
+    NSString *storedStringForWebView;
 }
 
 +(PostViewController *)postViewController;
@@ -28,6 +29,7 @@
 
 @property (nonatomic, assign) NSString *articleURL;
 @property (nonatomic, assign) NSString *articleTitle;
+@property (nonatomic, assign) NSString *storedStringForWebView;
 
 
 @end

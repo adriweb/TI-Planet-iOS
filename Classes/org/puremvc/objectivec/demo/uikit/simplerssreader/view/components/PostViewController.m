@@ -44,11 +44,25 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // initial loading
+    [webView loadHTMLString:@"Chargement..." baseURL: NULL];
+    
     ((UIScrollView *)webView.subviews[0]).scrollsToTop = YES;
     // scrolls to top when touching the status bar
     
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionStuff)];        
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                   target:self
+                                                                                   action:@selector(actionStuff)];
     self.navigationItem.rightBarButtonItem = anotherButton;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    // inited after first display
+    if ([webView.request.URL.absoluteString isEqualToString:@"about:blank"]) {
+        [webView loadHTMLString:storedStringForWebView baseURL:[NSURL URLWithString:@"https://tiplanet.org/"]];
+    }
 }
 
 - (void) actionStuff {
@@ -76,18 +90,10 @@
 
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             activityController.popoverPresentationController.barButtonItem = self.navigationItem.rightBarButtonItem;
-            [self presentViewController:activityController animated:YES completion:nil];
         }
         
         [self presentViewController:activityController animated:YES completion:nil];
     }
-}
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller
-          didFinishWithResult:(MFMailComposeResult)result
-                        error:(NSError *)error
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (BOOL)webView:(UIWebView *)webView 
@@ -120,18 +126,21 @@
     
     NSString *style = [NSString stringWithFormat:@"<style type='text/css'><!--* { font-family: Arial; color: #333; font-size: 1em;}  h1 { font-size: 1.4em; text-shadow: 0px 0px 0px #eee, 1px 1px 0px #707070;} span.header { color: #666; font-size: .8em; } a { color:#3388BB; text-decoration:underline }  img { max-width:%ipx; height:auto;} --></style>",theWidth];
     
-    [webView loadHTMLString: [NSString stringWithFormat: @"<div>%@ <span class=\"header\">Par <b>%@</b>, %@</span><h1>%@</h1></div><p>%@</p>",
-                              style,
-                              entryVO.author,
-                              [FormatterUtil formatFeedDateString: entryVO.dateString
-                                                        newFormat: @"'le 'dd'/'MM'/'yyyy' à 'HH:mm"],
-                              entryVO.title,
+    NSLog(@"webview = %p : %@", webView, webView);
+    
+    storedStringForWebView = [NSString stringWithFormat: @"<div>%@ <span class=\"header\">Par <b>%@</b>, %@</span><h1>%@</h1></div><p>%@</p>",
+                                  style,
+                                  entryVO.author,
+                                  [FormatterUtil formatFeedDateString: entryVO.dateString
+                                                            newFormat: @"'le 'dd'/'MM'/'yyyy' à 'HH:mm"],
+                                  entryVO.title,
                               
-                              [entryVO.txt
-                                 stringByReplacingOccurrencesOfString:@"src=\"/forum/images/spinload.gif\" data-original=\""
-                                                           withString:@"src=\""]
-                              ]
-                baseURL:[NSURL URLWithString:@"https://tiplanet.org/"]
+                                  [entryVO.txt stringByReplacingOccurrencesOfString:@"src=\"/forum/images/spinload.gif\" data-original=\""
+                                                                         withString:@"src=\""]
+                              ];
+    
+    [webView loadHTMLString:storedStringForWebView
+                    baseURL:[NSURL URLWithString:@"https://tiplanet.org/"]
      ];
 
 }
