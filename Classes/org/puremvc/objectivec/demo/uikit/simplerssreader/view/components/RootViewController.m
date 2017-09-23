@@ -179,10 +179,8 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
-    NSUInteger row = indexPath.row;
-    
-    [self.delegate getBlogEntry:row];
+{
+    [self.delegate getBlogEntry:indexPath.row];
 }
 
 #pragma -
@@ -190,7 +188,6 @@
 
 -(void) refresh
 {
-    NSLog(@"got to refresh.... not done yet");
     [self getBlogEntries]; //  <-- not working (crash)
     //[self stopLoading]; // to put somewhere else when ^ is working
 }

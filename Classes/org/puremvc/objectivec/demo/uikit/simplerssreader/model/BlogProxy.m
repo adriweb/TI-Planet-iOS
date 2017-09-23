@@ -44,10 +44,7 @@
 #pragma mark remote proxy methods
 
 -(void)getAllEntries
-{    
-    
-    NSLog(@"getAllEntries");
-    
+{
     [NSURLCache sharedURLCache].memoryCapacity = 0;
     [NSURLCache sharedURLCache].diskCapacity = 0;
     
@@ -58,22 +55,17 @@
     [NSThread detachNewThreadSelector:@selector( startParsing ) 
                              toTarget:self 
                             withObject:nil];    
-     
 }
 
 
 -(void)startParsing
 {    
-    NSLog(@"startParsing");
-    
     @autoreleasepool {
         
         BlogService *service = [[BlogService alloc] init];
         
         BOOL success;
         success = [service getBlogData: [NSURL URLWithString: BLOG_FEED]];
-        
-        NSLog(@"hello after getblogdata");
         
         if ( success )
         {
@@ -93,7 +85,7 @@
     if ( [data count] > entryId )
     {
         EntryVO *entry = data[entryId];
-        [self sendNotification: BLOG_POST_DETAIL body: entry];        
+        [self sendNotification: BLOG_POST_DETAIL body: entry];
     }
     else
     {

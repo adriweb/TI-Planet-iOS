@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/org/puremvc/objectivec/demo/uikit/simplerssreader/service/BlogService.m"
-            timestampString = "527815156.048139"
+            timestampString = "527817819.290841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
@@ -78,6 +78,22 @@
             startingLineNumber = "173"
             endingLineNumber = "173"
             landmarkName = "-stopLoadingComplete:finished:context:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/org/puremvc/objectivec/demo/uikit/simplerssreader/view/components/PostViewController.m"
+            timestampString = "527817929.332576"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-newBlogEntry:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
