@@ -32,7 +32,7 @@ static id<IFacade> instance;
  */
 -(instancetype)init {
     if (instance != nil) {
-        [NSException raise:@"Facade Singleton already constructed! Use getInstance instead." format:nil];
+
     } else if (self = [super init]) {
         [self initializeFacade];
     }

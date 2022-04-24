@@ -19,12 +19,12 @@
                 <outlet property="window" destination="2" id="5"/>
             </connections>
         </customObject>
-        <window opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2">
+        <window opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="2">
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-            <point key="canvasLocation" x="132" y="76"/>
+            <point key="canvasLocation" x="203" y="-540"/>
         </window>
         <tabBarController id="36" userLabel="Tab Bar Controller">
             <extendedEdge key="edgesForExtendedLayout"/>
@@ -40,24 +40,15 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="News" id="44"/>
                 </viewController>
-                <viewController title="View One" nibName="ForumView" id="39" customClass="ForumViewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Forum" image="112-group.png" id="45"/>
-                </viewController>
-                <viewController title="View One" nibName="ChatView" id="38" customClass="ChatViewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Chat" image="09-chat-2.png" id="46"/>
-                </viewController>
                 <viewController title="View Two" nibName="AboutView" id="42" customClass="AboutViewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="About..." image="info.png" id="43"/>
                 </viewController>
             </viewControllers>
+            <point key="canvasLocation" x="-488" y="-540"/>
         </tabBarController>
     </objects>
     <resources>
-        <image name="09-chat-2.png" width="24" height="22"/>
-        <image name="112-group.png" width="32" height="21"/>
         <image name="info.png" width="20" height="20"/>
     </resources>
 </document>

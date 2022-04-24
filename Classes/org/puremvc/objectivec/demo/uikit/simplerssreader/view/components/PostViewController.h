@@ -11,12 +11,13 @@
 
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 #import "EntryVO.h"
 #import <MessageUI/MessageUI.h>
 
-@interface PostViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate>
+@interface PostViewController : UIViewController <WKNavigationDelegate, UIActionSheetDelegate>
 {
-	IBOutlet UIWebView *webView;
+	IBOutlet WKWebView *webView;
     __unsafe_unretained NSString *articleURL;
     __unsafe_unretained NSString *articleTitle;
     NSString *storedStringForWebView;

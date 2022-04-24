@@ -17,15 +17,15 @@
 }
 
 -(void)viewDidLoad {
-    forumWebView.delegate = self;
+    forumWebView.navigationDelegate = self;
     [forumWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://tiplanet.org/forum/"]]];
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView{
+- (void)didStartProvisionalNavigation:(WKWebView *)webView{
     UIApplication* app = [UIApplication sharedApplication]; app.networkActivityIndicatorVisible = YES;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
+- (void)didFinishNavigation:(WKWebView *)webView{
     UIApplication* app = [UIApplication sharedApplication]; app.networkActivityIndicatorVisible = NO;
 }
 

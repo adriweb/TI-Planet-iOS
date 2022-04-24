@@ -57,10 +57,10 @@
     self.navigationItem.rightBarButtonItem = anotherButton;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
+- (void)didFinishNavigation:(WKWebView *)webView
 {
     // inited after first display
-    if ([webView.request.URL.absoluteString isEqualToString:@"about:blank"]) {
+    if ([webView.URL.absoluteString isEqualToString:@"about:blank"]) {
         [webView loadHTMLString:storedStringForWebView baseURL:[NSURL URLWithString:@"https://tiplanet.org/"]];
     }
 }
@@ -80,7 +80,7 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:articleURL]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:articleURL] options:@{} completionHandler:nil];
     } else if (buttonIndex == 1) {
         NSMutableArray *sharingItems = [NSMutableArray new];
         [sharingItems addObject:articleTitle];
@@ -96,19 +96,6 @@
     }
 }
 
-- (BOOL)webView:(UIWebView *)webView 
-        shouldStartLoadWithRequest:(NSURLRequest *)request 
-        navigationType:(UIWebViewNavigationType)navigationType 
-{
-    if (navigationType == UIWebViewNavigationTypeLinkClicked) 
-    {
-        // open browser
-        [[UIApplication sharedApplication] openURL:request.URL];
-        return NO;
-    }
-    return YES;
-}
-
 #pragma -
 #pragma mark methods which are called by its mediator
 
@@ -122,19 +109,13 @@
     articleURL = entryVO.link;
     articleTitle = entryVO.title;
     
-    int theWidth = [UIScreen mainScreen].bounds.size.width-10;
-    
-    NSString *style = [NSString stringWithFormat:@"<style type='text/css'><!--* { font-family: Arial; color: #333; font-size: 1em;}  h1 { font-size: 1.4em; text-shadow: 0px 0px 0px #eee, 1px 1px 0px #707070;} span.header { color: #666; font-size: .8em; } a { color:#3388BB; text-decoration:underline }  img { max-width:%ipx; height:auto;} --></style>",theWidth];
-    
+       
     NSLog(@"webview = %p : %@", webView, webView);
     
-    storedStringForWebView = [NSString stringWithFormat: @"<div>%@ <span class=\"header\">Par <b>%@</b>, %@</span><h1>%@</h1></div><p>%@</p>",
-                                  style,
+    storedStringForWebView = [NSString stringWithFormat: @"<div><span class=\"header\">Par <b>%@</b>, %@</span><h1>%@</h1></div><p>%@</p>",
                                   entryVO.author,
-                                  [FormatterUtil formatFeedDateString: entryVO.dateString
-                                                            newFormat: @"'le 'dd'/'MM'/'yyyy' à 'HH:mm"],
+                                  [FormatterUtil formatFeedDateString: entryVO.dateString newFormat: @"'le 'dd'/'MM'/'yyyy' à 'HH:mm"],
                                   entryVO.title,
-                              
                                   [entryVO.txt stringByReplacingOccurrencesOfString:@"src=\"/forum/images/spinload.gif\" data-original=\""
                                                                          withString:@"src=\""]
                               ];

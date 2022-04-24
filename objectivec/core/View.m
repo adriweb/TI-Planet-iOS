@@ -30,7 +30,7 @@ static id<IView> instance;
  */
 -(instancetype)init {
     if (instance != nil) {
-        [NSException raise:@"View Singleton already constructed! Use getInstance instead." format:nil];
+
     } else if (self = [super init]) {
         self.mediatorMap = [NSMutableDictionary dictionary];
         self.observerMap = [NSMutableDictionary dictionary];

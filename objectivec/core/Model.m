@@ -28,7 +28,7 @@ static id<IModel> instance;
  */
 -(instancetype)init {
     if (instance != nil) {
-        [NSException raise:@"Model Singleton already constructed! Use getInstance instead." format:nil];
+
     } else if (self = [super init]) {
         self.proxyMap = [NSMutableDictionary dictionary];
         [self initializeModel];

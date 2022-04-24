@@ -41,8 +41,8 @@
     tab1.tabBarItem.title = @"News";
     tab1.tabBarItem.image = [UIImage imageNamed:@"feed.png"];
 
-    UIViewController *tab4 = viewArrays[3];
-    tab4.tabBarItem.image = [UIImage imageNamed:@"info.png"];
+    UIViewController *tab2 = viewArrays[1];
+    tab2.tabBarItem.image = [UIImage imageNamed:@"info.png"];
     
     [window addSubview:tabBarController.view];
     window.rootViewController = tabBarController;
@@ -53,12 +53,11 @@
     
     if ((internetStatus != ReachableViaWiFi) && (internetStatus != ReachableViaWWAN))
     {
-        UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"Pas de connexion Internet"
-                                                          message:@"Une connexion internet via Wifi ou Réseau cellulaire est requise."
-                                                         delegate:self
-                                                cancelButtonTitle:@"Ok"
-                                                otherButtonTitles:nil];
-        [myAlert show];
+        UIAlertController * myAlert = [UIAlertController
+                        alertControllerWithTitle:@"Pas de connexion Internet"
+                                         message:@"Une connexion internet via Wifi ou Réseau cellulaire est requise."
+                                  preferredStyle:UIAlertControllerStyleAlert];
+        [rootView presentViewController:myAlert animated:YES completion:nil];
     }
     
     [[ApplicationFacade getInstance] startup: rootView];

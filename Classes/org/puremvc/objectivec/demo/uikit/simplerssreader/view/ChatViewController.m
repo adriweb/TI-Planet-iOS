@@ -23,12 +23,12 @@
     [ChatWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://tiplanet.org/forum/chat/"]]];
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView{
+- (void)didStartProvisionalNavigation:(WKWebView *)webView{
     UIApplication* app = [UIApplication sharedApplication]; app.networkActivityIndicatorVisible = YES;
     pageTitle.title = @"Chargement...";
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
+- (void)didFinishNavigation:(WKWebView *)webView{
     NSString *titleStr = [ChatWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
     UIApplication* app = [UIApplication sharedApplication]; app.networkActivityIndicatorVisible = NO;
     pageTitle.title = titleStr;

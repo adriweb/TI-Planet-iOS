@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
-@interface ForumViewController : UIViewController <UIWebViewDelegate> {
+@interface ForumViewController : UIViewController <WKNavigationDelegate> {
 
-    IBOutlet UIWebView  *forumWebView;
+    IBOutlet WKWebView  *forumWebView;
 }
 
 

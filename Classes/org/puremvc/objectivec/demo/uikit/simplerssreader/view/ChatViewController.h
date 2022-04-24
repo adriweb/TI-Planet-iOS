@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
-@interface ChatViewController : UIViewController <UIWebViewDelegate> {
+@interface ChatViewController : UIViewController <WKNavigationDelegate> {
 
-    IBOutlet UIWebView  *ChatWebView;
+    IBOutlet WKWebView  *ChatWebView;
     IBOutlet UIBarButtonItem *pageTitle;
 }
 

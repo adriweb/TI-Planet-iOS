@@ -23,6 +23,7 @@
 		040CE24A0F3E20EB00FCABD0 /* BlogEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CE2490F3E20EB00FCABD0 /* BlogEntryCell.m */; };
 		090AABA21F75E0200018923E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 090AABA11F75E0200018923E /* Images.xcassets */; };
 		092AC07116C01ADF001C7CD7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 092AC07016C01ADF001C7CD7 /* Default-568h@2x.png */; };
+		0932FF412815FF6E0090E31B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0932FF402815FF6E0090E31B /* Launch Screen.storyboard */; };
 		09FB74CF1F757DDE005641EF /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB74C91F757DD8005641EF /* Controller.m */; };
 		09FB74D01F757DDE005641EF /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB74CA1F757DD8005641EF /* Model.m */; };
 		09FB74D11F757DDE005641EF /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB74CE1F757DD8005641EF /* View.m */; };
@@ -41,10 +42,8 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		7A3C069F1410D6020030E217 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A3C069D1410D6020030E217 /* AboutView.xib */; };
-		7A3C06A01410D6020030E217 /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A3C069E1410D6020030E217 /* ChatView.xib */; };
 		7A3DF80B140E99E900DA3226 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A3DF80A140E99E900DA3226 /* MainWindow-iPad.xib */; };
 		7A54CF5A1410D6FA00C4DAF9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A54CF571410D6FA00C4DAF9 /* AboutViewController.m */; };
-		7A54CF5B1410D6FA00C4DAF9 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A54CF591410D6FA00C4DAF9 /* ChatViewController.m */; };
 		7A7F39591411850600701BCE /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F39581411850600701BCE /* GradientButton.m */; };
 		7A7F395B14118B9400701BCE /* BigLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F395A14118B9400701BCE /* BigLogo.png */; };
 		7AE755E0140FEABA008B632C /* BlogEntryCell-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE755DF140FEABA008B632C /* BlogEntryCell-iPad.xib */; };
@@ -52,8 +51,6 @@
 		7AE755EC140FEE56008B632C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE755EB140FEE56008B632C /* QuartzCore.framework */; };
 		7AE755F71410196F008B632C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE755F61410196F008B632C /* Reachability.m */; };
 		7AE755F914101B9F008B632C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE755F814101B9E008B632C /* SystemConfiguration.framework */; };
-		7AE755FF14101CAD008B632C /* ForumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE755FE14101CAD008B632C /* ForumView.xib */; };
-		7AE7560214101F07008B632C /* ForumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE7560114101F06008B632C /* ForumViewController.m */; };
 		D9588C4A141381AA0090C51B /* 09-chat-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D9588C48141381AA0090C51B /* 09-chat-2.png */; };
 		D9588C4B141381AA0090C51B /* 112-group.png in Resources */ = {isa = PBXBuildFile; fileRef = D9588C49141381AA0090C51B /* 112-group.png */; };
 		D9588C4F141383860090C51B /* feed.png in Resources */ = {isa = PBXBuildFile; fileRef = D9588C4D141383860090C51B /* feed.png */; };
@@ -82,7 +79,7 @@
 		040CE2260F3E1E9500FCABD0 /* FormatterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormatterUtil.h; sourceTree = "<group>"; };
 		040CE2270F3E1E9500FCABD0 /* FormatterUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormatterUtil.m; sourceTree = "<group>"; };
 		040CE22A0F3E1E9500FCABD0 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
-		040CE22B0F3E1E9600FCABD0 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		040CE22B0F3E1E9600FCABD0 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		040CE22C0F3E1E9600FCABD0 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		040CE22D0F3E1E9600FCABD0 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		040CE22E0F3E1E9600FCABD0 /* PostViewMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewMediator.h; sourceTree = "<group>"; };
@@ -93,31 +90,9 @@
 		040CE2410F3E1F9000FCABD0 /* BlogEntryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlogEntryCell.xib; sourceTree = "<group>"; };
 		040CE2480F3E20EB00FCABD0 /* BlogEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogEntryCell.h; sourceTree = "<group>"; };
 		040CE2490F3E20EB00FCABD0 /* BlogEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogEntryCell.m; sourceTree = "<group>"; };
-		090AAB8A1F75E00C0018923E /* Icon-App-57x57@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-57x57@1x.png"; sourceTree = "<group>"; };
-		090AAB8B1F75E00C0018923E /* Icon-App-76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@2x.png"; sourceTree = "<group>"; };
-		090AAB8C1F75E00C0018923E /* Icon-App-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@1x.png"; sourceTree = "<group>"; };
-		090AAB8D1F75E00C0018923E /* Icon-App-60x60@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@1x.png"; sourceTree = "<group>"; };
-		090AAB8E1F75E00C0018923E /* Icon-Small-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50x50@2x.png"; sourceTree = "<group>"; };
-		090AAB8F1F75E00C0018923E /* Icon-App-40x40@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@1x.png"; sourceTree = "<group>"; };
-		090AAB901F75E00C0018923E /* Icon-App-76x76@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@3x.png"; sourceTree = "<group>"; };
-		090AAB911F75E00C0018923E /* Icon-App-72x72@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-72x72@1x.png"; sourceTree = "<group>"; };
-		090AAB921F75E00C0018923E /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
-		090AAB931F75E00C0018923E /* Icon-App-83.5x83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-83.5x83.5@2x.png"; sourceTree = "<group>"; };
-		090AAB941F75E00C0018923E /* Icon-App-20x20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@3x.png"; sourceTree = "<group>"; };
-		090AAB951F75E00C0018923E /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
-		090AAB961F75E00C0018923E /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
-		090AAB971F75E00C0018923E /* Icon-App-29x29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@3x.png"; sourceTree = "<group>"; };
-		090AAB981F75E00C0018923E /* Icon-App-40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@2x.png"; sourceTree = "<group>"; };
-		090AAB991F75E00C0018923E /* Icon-App-72x72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-72x72@2x.png"; sourceTree = "<group>"; };
-		090AAB9A1F75E00C0018923E /* Icon-App-60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@3x.png"; sourceTree = "<group>"; };
-		090AAB9B1F75E00C0018923E /* Icon-Small-50x50@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50x50@1x.png"; sourceTree = "<group>"; };
-		090AAB9C1F75E00C0018923E /* Icon-App-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@2x.png"; sourceTree = "<group>"; };
-		090AAB9D1F75E00C0018923E /* Icon-App-57x57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-57x57@2x.png"; sourceTree = "<group>"; };
-		090AAB9E1F75E00C0018923E /* Icon-App-76x76@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@1x.png"; sourceTree = "<group>"; };
-		090AAB9F1F75E00C0018923E /* Icon-App-40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@3x.png"; sourceTree = "<group>"; };
-		090AABA01F75E00C0018923E /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
 		090AABA11F75E0200018923E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "TI-Planet iOS/Images.xcassets"; sourceTree = "<group>"; };
 		092AC07016C01ADF001C7CD7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		0932FF402815FF6E0090E31B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		09D9DC0018DB3274009FEE56 /* Mediator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mediator.h; sourceTree = "<group>"; };
 		09FB74A81F757DD8005641EF /* IView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IView.h; sourceTree = "<group>"; };
 		09FB74A91F757DD8005641EF /* INotifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = INotifier.h; sourceTree = "<group>"; };
@@ -173,12 +148,9 @@
 		7A030763140E879500177115 /* SimpleCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCommand.h; sourceTree = "<group>"; };
 		7A030764140E879500177115 /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
 		7A3C069D1410D6020030E217 /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutView.xib; path = Classes/org/puremvc/objectivec/demo/uikit/simplerssreader/view/Webviews/AboutView.xib; sourceTree = "<group>"; };
-		7A3C069E1410D6020030E217 /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChatView.xib; path = Classes/org/puremvc/objectivec/demo/uikit/simplerssreader/view/Webviews/ChatView.xib; sourceTree = "<group>"; };
 		7A3DF80A140E99E900DA3226 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		7A54CF561410D6FA00C4DAF9 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		7A54CF571410D6FA00C4DAF9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
-		7A54CF581410D6FA00C4DAF9 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
-		7A54CF591410D6FA00C4DAF9 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		7A7F39571411850600701BCE /* GradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientButton.h; path = ../../../../../../../../GradientButton.h; sourceTree = "<group>"; };
 		7A7F39581411850600701BCE /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientButton.m; path = ../../../../../../../../GradientButton.m; sourceTree = "<group>"; };
 		7A7F395A14118B9400701BCE /* BigLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigLogo.png; sourceTree = "<group>"; };
@@ -188,9 +160,6 @@
 		7AE755F51410196F008B632C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		7AE755F61410196F008B632C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		7AE755F814101B9E008B632C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		7AE755FE14101CAD008B632C /* ForumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumView.xib; path = Classes/org/puremvc/objectivec/demo/uikit/simplerssreader/view/Webviews/ForumView.xib; sourceTree = SOURCE_ROOT; };
-		7AE7560014101F05008B632C /* ForumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumViewController.h; sourceTree = "<group>"; };
-		7AE7560114101F06008B632C /* ForumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9588C48141381AA0090C51B /* 09-chat-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "09-chat-2.png"; sourceTree = "<group>"; };
 		D9588C49141381AA0090C51B /* 112-group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "112-group.png"; sourceTree = "<group>"; };
@@ -293,12 +262,8 @@
 				040CE22F0F3E1E9600FCABD0 /* PostViewMediator.m */,
 				040CE2300F3E1E9600FCABD0 /* RootViewMediator.h */,
 				040CE2310F3E1E9600FCABD0 /* RootViewMediator.m */,
-				7AE7560014101F05008B632C /* ForumViewController.h */,
-				7AE7560114101F06008B632C /* ForumViewController.m */,
 				7A54CF561410D6FA00C4DAF9 /* AboutViewController.h */,
 				7A54CF571410D6FA00C4DAF9 /* AboutViewController.m */,
-				7A54CF581410D6FA00C4DAF9 /* ChatViewController.h */,
-				7A54CF591410D6FA00C4DAF9 /* ChatViewController.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -324,36 +289,6 @@
 				1D3623250D0F684500981E51 /* TIPlanetAppDelegate.m */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		090AAB891F75E00C0018923E /* AppIcon.appiconset */ = {
-			isa = PBXGroup;
-			children = (
-				090AAB8A1F75E00C0018923E /* Icon-App-57x57@1x.png */,
-				090AAB8B1F75E00C0018923E /* Icon-App-76x76@2x.png */,
-				090AAB8C1F75E00C0018923E /* Icon-App-29x29@1x.png */,
-				090AAB8D1F75E00C0018923E /* Icon-App-60x60@1x.png */,
-				090AAB8E1F75E00C0018923E /* Icon-Small-50x50@2x.png */,
-				090AAB8F1F75E00C0018923E /* Icon-App-40x40@1x.png */,
-				090AAB901F75E00C0018923E /* Icon-App-76x76@3x.png */,
-				090AAB911F75E00C0018923E /* Icon-App-72x72@1x.png */,
-				090AAB921F75E00C0018923E /* Icon-App-20x20@1x.png */,
-				090AAB931F75E00C0018923E /* Icon-App-83.5x83.5@2x.png */,
-				090AAB941F75E00C0018923E /* Icon-App-20x20@3x.png */,
-				090AAB951F75E00C0018923E /* Contents.json */,
-				090AAB961F75E00C0018923E /* Icon-App-20x20@2x.png */,
-				090AAB971F75E00C0018923E /* Icon-App-29x29@3x.png */,
-				090AAB981F75E00C0018923E /* Icon-App-40x40@2x.png */,
-				090AAB991F75E00C0018923E /* Icon-App-72x72@2x.png */,
-				090AAB9A1F75E00C0018923E /* Icon-App-60x60@3x.png */,
-				090AAB9B1F75E00C0018923E /* Icon-Small-50x50@1x.png */,
-				090AAB9C1F75E00C0018923E /* Icon-App-60x60@2x.png */,
-				090AAB9D1F75E00C0018923E /* Icon-App-57x57@2x.png */,
-				090AAB9E1F75E00C0018923E /* Icon-App-76x76@1x.png */,
-				090AAB9F1F75E00C0018923E /* Icon-App-40x40@3x.png */,
-				090AABA01F75E00C0018923E /* Icon-App-29x29@2x.png */,
-			);
-			path = AppIcon.appiconset;
 			sourceTree = "<group>";
 		};
 		09D9DBCC18DB31B0009FEE56 /* PureMVC */ = {
@@ -471,6 +406,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0932FF402815FF6E0090E31B /* Launch Screen.storyboard */,
 				09FE063A2815B4D600F19117 /* TI-Planet iOS.entitlements */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -495,7 +431,6 @@
 			isa = PBXGroup;
 			children = (
 				090AABA11F75E0200018923E /* Images.xcassets */,
-				090AAB891F75E00C0018923E /* AppIcon.appiconset */,
 				09D9DBCC18DB31B0009FEE56 /* PureMVC */,
 				D9EEC8E51413C02900E2443F /* Images */,
 				7AE755F41410196F008B632C /* Reachability */,
@@ -583,8 +518,6 @@
 				040CE1670F3E125B00FCABD0 /* PostViewController.xib */,
 				040CE2410F3E1F9000FCABD0 /* BlogEntryCell.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				7AE755FE14101CAD008B632C /* ForumView.xib */,
-				7A3C069E1410D6020030E217 /* ChatView.xib */,
 				7A3C069D1410D6020030E217 /* AboutView.xib */,
 			);
 			name = "Interface files";
@@ -651,11 +584,10 @@
 				040CE23D0F3E1EDE00FCABD0 /* Localizable.strings in Resources */,
 				040CE2420F3E1F9000FCABD0 /* BlogEntryCell.xib in Resources */,
 				7A3DF80B140E99E900DA3226 /* MainWindow-iPad.xib in Resources */,
+				0932FF412815FF6E0090E31B /* Launch Screen.storyboard in Resources */,
 				7AE755E0140FEABA008B632C /* BlogEntryCell-iPad.xib in Resources */,
 				7AE755EA140FEE44008B632C /* arrow.png in Resources */,
-				7AE755FF14101CAD008B632C /* ForumView.xib in Resources */,
 				7A3C069F1410D6020030E217 /* AboutView.xib in Resources */,
-				7A3C06A01410D6020030E217 /* ChatView.xib in Resources */,
 				7A7F395B14118B9400701BCE /* BigLogo.png in Resources */,
 				D9588C4A141381AA0090C51B /* 09-chat-2.png in Resources */,
 				D9588C4B141381AA0090C51B /* 112-group.png in Resources */,
@@ -698,12 +630,10 @@
 				040CE23B0F3E1E9600FCABD0 /* RootViewMediator.m in Sources */,
 				040CE24A0F3E20EB00FCABD0 /* BlogEntryCell.m in Sources */,
 				7AE755F71410196F008B632C /* Reachability.m in Sources */,
-				7AE7560214101F07008B632C /* ForumViewController.m in Sources */,
 				7A54CF5A1410D6FA00C4DAF9 /* AboutViewController.m in Sources */,
 				09FB74D01F757DDE005641EF /* Model.m in Sources */,
 				09FB74D51F757DEE005641EF /* Notification.m in Sources */,
 				09FB74D41F757DEE005641EF /* Observer.m in Sources */,
-				7A54CF5B1410D6FA00C4DAF9 /* ChatViewController.m in Sources */,
 				09FB74D71F757DEE005641EF /* MacroCommand.m in Sources */,
 				7A7F39591411850600701BCE /* GradientButton.m in Sources */,
 			);
@@ -715,31 +645,24 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "TI-Planet iOS/TI-Planet iOS.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = Z3B7V95FNU;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TI-Planet iOS_Prefix.pch";
-				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Adriweb.TIPlanet;
 				PRODUCT_NAME = "TI-Planet iOS";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
@@ -747,29 +670,24 @@
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "TI-Planet iOS/TI-Planet iOS.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = Z3B7V95FNU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TI-Planet iOS_Prefix.pch";
-				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Adriweb.TIPlanet;
 				PRODUCT_NAME = "TI-Planet iOS";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

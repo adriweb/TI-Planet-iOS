@@ -55,26 +55,10 @@
     [super loadView];
 }
 
-- (void)killSplashScreen {
-    [UIView animateWithDuration:0.5 animations:^{imageView.alpha = 0.0;} completion:NULL];
-}
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-    
-    CGRect myImageRect = [UIScreen mainScreen].applicationFrame;
-    myImageRect.origin.y -= 18;
-    imageView = [[UIImageView alloc] initWithFrame:myImageRect];
-    imageView.image = [UIImage imageNamed:@"Default.png"];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) imageView.image = [UIImage imageNamed:@"Default-Portrait~ipad.png"];
-    imageView.opaque = YES; // explicitly opaque for performance
-    [self.view addSubview:imageView];
-    
-    [self performSelector:@selector(killSplashScreen) withObject:nil afterDelay:0];
-
-    [self setTitle: NSLocalizedString(@"TITLE_ROOT", @"TITLE_ROOT not found")];
     
     [self showLoader];
 }
@@ -89,11 +73,11 @@
 -(void)showLoader
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        feedLoader = [[UIActivityIndicatorView alloc] initWithFrame: CGRectMake([UIScreen mainScreen].bounds.size.width/2-10, 145, 20, 20)];
+        self->feedLoader = [[UIActivityIndicatorView alloc] initWithFrame: CGRectMake([UIScreen mainScreen].bounds.size.width/2-10, 145, 20, 20)];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-        [feedLoader startAnimating];
-        feedLoader.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-        [self.view addSubview: feedLoader];
+        [self->feedLoader startAnimating];
+        self->feedLoader.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+        [self.view addSubview: self->feedLoader];
     });
 }
 
@@ -102,9 +86,9 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [feedLoader stopAnimating];
-        [feedLoader removeFromSuperview];
-        feedLoader = nil;
+        [self->feedLoader stopAnimating];
+        [self->feedLoader removeFromSuperview];
+        self->feedLoader = nil;
     });
 }
 
@@ -118,7 +102,7 @@
 }
 
 
-// Customize the number of rows in the table view.
+// Customself->ize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
     return blogEntries.count;

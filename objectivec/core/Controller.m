@@ -32,7 +32,7 @@ static id<IController> instance;
  */
 -(instancetype)init {
     if (instance != nil) {
-        [NSException raise:@"Controller Singleton already constructed! Use getInstance instead." format:nil];
+        NSLog(@"Controller Singleton already constructed! Use getInstance instead.");
     } else if (self = [super init]) {
         self.commandMap = [NSMutableDictionary dictionary];
         [self initializeController];
